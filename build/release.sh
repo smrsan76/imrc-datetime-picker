@@ -18,10 +18,10 @@ if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
     git commit -m "[build] ${VERSION}" || :
 
     # release
-    npm version "${VERSION}" --message "[release] ${VERSION}"
+    npm version --allow-same-version "${VERSION}" --message "[release] ${VERSION}"
 
     # publish
     git push origin "v${VERSION}"
     git push
-    npm publish --allow-same-version --registry=https://registry.npmjs.org
+    npm publish --registry=https://registry.npmjs.org
 fi
