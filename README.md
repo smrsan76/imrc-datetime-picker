@@ -1,6 +1,8 @@
-# Rc-Datetime-Picker
+# (Improved) Rc-Datetime-Picker
 
-Rc-Datetime-Picker is a react component for datetime picker by [Moment.js].
+Imrc-Datetime-Picker is a react component for datetime picker by [Moment.js].
+
+Thanks to [~allenwu](https://www.npmjs.com/~allenwu) for authoring the base package [`rc-datetime-picker`](https://npmjs.com/package/rc-datetime-picker)
 
 ## Requirements
 
@@ -13,23 +15,22 @@ Rc-Datetime-Picker is a react component for datetime picker by [Moment.js].
 ### Install with NPM
 
 ```
-$ npm install rc-datetime-picker
+$ npm install imrc-datetime-picker
 ```
 
 ### Manual download
 
 Besides npm package, UMD module is placed under `dist/` directory:
 
-- dist/rc-datetime-picker.js
-- dist/rc-datetime-picker.min.js
+- dist/imrc-datetime-picker.js
+- dist/imrc-datetime-picker-min.js
 
 ## Usage
 
 See the [demo] page.
 
-
-[Moment.js]: http://momentjs.com/
-[demo]: https://allenwooooo.github.io/rc-datetime-picker/
+[moment.js]: http://momentjs.com/
+[demo]: https://smrsan76.github.io/imrc-datetime-picker/
 
 ## Props
 
