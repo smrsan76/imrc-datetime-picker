@@ -15,7 +15,7 @@ if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
     webpack --config ./webpack.config.dev.babel.js --env production
 
     git add -A
-    git commit --allow-same-version -m "[build] ${VERSION}" || :
+    git commit -m "[build] ${VERSION}" || :
 
     # release
     npm version "${VERSION}" --message "[release] ${VERSION}"
@@ -23,5 +23,5 @@ if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
     # publish
     git push origin "v${VERSION}"
     git push
-    npm publish --registry=https://registry.npmjs.org
+    npm publish --allow-same-version --registry=https://registry.npmjs.org
 fi
