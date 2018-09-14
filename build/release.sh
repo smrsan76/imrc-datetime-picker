@@ -15,7 +15,7 @@ if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
     webpack --config ./webpack.config.dev.babel.js --env production
 
     git add -A
-    git commit -m "[build] ${VERSION}" || :
+    git commit -m --allow-same-version "[build] ${VERSION}" || :
 
     # release
     npm version "${VERSION}" --message "[release] ${VERSION}"
