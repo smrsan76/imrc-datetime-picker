@@ -34,7 +34,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           { loader: "style-loader" },
-          { loader: "css-loader", sourceMap: isDevelopment },
+          { loader: "css-loader", options: { sourceMap: isDevelopment } },
           {
             loader: "sass-loader",
             options: {
