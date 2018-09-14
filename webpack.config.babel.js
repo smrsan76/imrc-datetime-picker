@@ -1,53 +1,66 @@
-import path from 'path';
-import {argv} from 'yargs';
+import path from "path";
 
+const libraryName = require("./package.json").name;
+const nodeModulesPath = path.resolve(__dirname, "./node_modules");
 
-const env = argv.env;
-const config = {
-  devtool: 'eval',
-  entry: {
-    app: ['./docs/app.jsx']
-  },
-  output: {
-    path: path.resolve(__dirname, './docs'),
-    filename: 'app.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        use: [
-          'eslint-loader'
-        ]
-      },
-      {
-        test: /\.(jsx|js)$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader'
-        ]
-      },
-      {
-        test: /\.(less|css)$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
+export default env => {
+  const minify = env.minify.toLowerCase() === "true";
+  const config = {
+    mode: "development",
+    entry: {
+      [libraryName]: ["./src/index.js"]
+    },
+    output: {
+      library: libraryName,
+      publicPath: "/dist/",
+      umdNamedDefine: true,
+      libraryTarget: "umd",
+      path: path.resolve(__dirname, "./dist"),
+      filename: `${libraryName}${minify ? ".min" : ""}.js`
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(jsx|js)$/,
+          exclude: [nodeModulesPath],
+          use: ["babel-loader"],
+          enforce: "pre"
+        },
+        {
+          test: /\.*css$/,
+          exclude: [nodeModulesPath],
+          use: [
+            { loader: "style-loader" },
+            { loader: "css-loader" },
+            {
+              loader: "sass-loader",
+              options: {
+                implementation: require("sass"),
+                fiber: require("fibers")
+              }
+            }
+          ]
+        }
+      ]
+    },
+    externals: {
+      moment: "moment",
+      react: "react",
+      "react-dom": "react-dom"
+    },
+    optimization: {
+      minimize: minify
+    },
+    resolve: {
+      extensions: [".js", ".jsx", ".json"],
+      alias: {
+        moment: path.resolve(__dirname, "./node_modules/moment"),
+        react: path.resolve(__dirname, "./node_modules/react"),
+        "react-dom": path.resolve(__dirname, "./node_modules/react-dom")
       }
-    ]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx', '.json']
-  }
+    },
+    plugins: []
+  };
+
+  return config;
 };
-
-if (env === 'development') {
-  config.entry.app.unshift('webpack/hot/only-dev-server');
-}
-
-
-export default config;
