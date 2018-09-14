@@ -1,7 +1,6 @@
-import {Component} from 'react';
-import CSSPropertyOperations from './CSSPropertyOperations/index.js';
-import ReactDOM from 'react-dom';
-
+import { Component } from "react";
+import CSSPropertyOperations from "./CSSPropertyOperations/index.js";
+import ReactDOM from "react-dom";
 
 class Portal extends Component {
   componentDidMount() {
@@ -22,7 +21,7 @@ class Portal extends Component {
     this.node = null;
   }
 
-  applyClassNameAndStyle = (props) => {
+  applyClassNameAndStyle = props => {
     if (props.className) {
       this.node.className = props.className;
     }
@@ -34,11 +33,11 @@ class Portal extends Component {
         this._reactInternalInstance
       );
     }
-  }
+  };
 
   renderPortal(props) {
     if (!this.node) {
-      this.node = document.createElement('div');
+      this.node = document.createElement("div");
       this.applyClassNameAndStyle(props);
 
       document.body.appendChild(this.node);
@@ -46,7 +45,7 @@ class Portal extends Component {
       this.applyClassNameAndStyle(props);
     }
 
-    const {children} = props;
+    const { children } = props;
 
     this.portal = ReactDOM.unstable_renderSubtreeIntoContainer(
       this,
