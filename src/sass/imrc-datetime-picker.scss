@@ -1,8 +1,8 @@
-* {
+:local(.datetime-picker) * {
   box-sizing: border-box;
 }
 
-.datetime-picker {
+:local(.datetime-picker) {
   position: relative;
   border: 1px solid #dbdbdb;
   background-color: #fff;
@@ -15,7 +15,6 @@
   z-index: 100;
 
   .calendar {
-
     .calendar-nav {
       display: flex;
       justify-content: space-between;
@@ -63,7 +62,8 @@
       display: block;
       margin: 4px;
 
-      th, td {
+      th,
+      td {
         padding: 0;
       }
 
@@ -77,14 +77,14 @@
         }
 
         th {
-          color: #FF9A19;
+          color: #ff9a19;
           display: flex;
           align-items: center;
           justify-content: center;
           flex: 1;
           text-align: center;
           text-transform: uppercase;
-          font-size: .8em;
+          font-size: 0.8em;
           font-weight: 400;
         }
       }
@@ -166,19 +166,18 @@
     }
 
     .calendar-days table tbody tr td {
-      width: 100% / 7;
+      width: calc(100% / 7);
     }
 
     .calendar-months table tbody tr td {
-      width: 100% / 3;
+      width: calc(100% / 3);
       height: 40px;
     }
 
     .calendar-years table tbody tr td {
-      width: 100% / 4;
+      width: calc(100% / 4);
       height: 60px;
     }
-
   }
 
   .time {
@@ -249,7 +248,6 @@
         }
       }
     }
-
   }
 
   .shortcuts-bar {
@@ -279,7 +277,7 @@
   }
 }
 
-.datetime-range-picker {
+:local(.datetime-range-picker) {
   border: 1px solid #dbdbdb;
   background-color: #fff;
   border-radius: 4px;
@@ -287,28 +285,28 @@
   z-index: 100;
 }
 
-.datetime-trigger {
+:local(.datetime-trigger) {
   position: relative;
 
-  .datetime-picker {
+  :local(.datetime-picker) {
     position: absolute;
     top: 100%;
   }
 }
 
-.datetime-range-trigger {
+:local(.datetime-range-trigger) {
   position: relative;
 
-  .datetime-range-picker {
+  :local(.datetime-range-picker) {
     position: absolute;
     top: 100%;
   }
 }
 
-.datetime-picker-popup,
-.datetime-range-picker-popup {
+:local(.datetime-picker-popup),
+:local(.datetime-range-picker-popup) {
   margin-top: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   &:before {
     content: "";
