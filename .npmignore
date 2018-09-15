@@ -1,6 +1,0 @@
-webpack.config.dev.babel.js
-webpack.config.babel.js
-.gitignore
-.eslint
-build/
-docs/
