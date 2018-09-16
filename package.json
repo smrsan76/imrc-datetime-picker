@@ -13,9 +13,10 @@
     "moment"
   ],
   "scripts": {
-    "dev-server": "webpack-dev-server --config ./webpack.config.dev.babel.js --hot --inline --progress --color",
+    "clean-docs": "bash build/clean-docs.sh",
+    "dev-server": "npm run clean-docs && webpack-dev-server --inline --progress --color --hot --config ./webpack.config.doc.babel.js",
     "dev": "npm run dev-server -- --env=development",
-    "prod": "npm run dev-server -- --env=production",
+    "build-docs": "bash build/docs.sh",
     "build-js": "webpack --config ./webpack.config.babel.js --progress --env.minify false",
     "build-min-js": "webpack --config ./webpack.config.babel.js --progress --env.minify true",
     "build": "rm -rf ./dist && npm run build-js && npm run build-min-js",
@@ -35,6 +36,7 @@
     "blacklist": "^1.1.4",
     "classnames": "^2.2.5",
     "create-react-class": "^15.6.2",
+    "react-loadable": "^5.5.0",
     "react-slider": "^0.9.0"
   },
   "peerDependencies": {
@@ -50,6 +52,7 @@
     "babel-register": "^6.26.0",
     "css-loader": "^0.28.9",
     "fibers": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.6.2",
