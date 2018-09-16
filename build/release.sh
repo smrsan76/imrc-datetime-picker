@@ -12,7 +12,7 @@ if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
     VERSION=${VERSION} npm run build
 
     # docs
-    webpack --config ./webpack.config.dev.babel.js --env production
+    webpack --config ./webpack.config.doc.babel.js --env production
 
     git add -A
     git commit -m "[build] ${VERSION}" || :
