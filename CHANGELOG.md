@@ -2,7 +2,7 @@
 
 ## v1.0.0
 
-> Sep 15, 2018
+> Sep 16, 2018
 
 - LICENSE :: Changed
 - `.gitignore` in `.npmignore` :: Not Ignored
