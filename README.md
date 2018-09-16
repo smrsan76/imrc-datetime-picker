@@ -4,6 +4,8 @@ Imrc-Datetime-Picker is a react component for datetime picker by [Moment.js].
 
 Thanks to [~allenwu](https://www.npmjs.com/~allenwu) for authoring the base package [`rc-datetime-picker`](https://npmjs.com/package/rc-datetime-picker)
 
+[**See The **`ChangeLog`** Here**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CHANGELOG.md)
+
 ## Requirements
 
 - React
