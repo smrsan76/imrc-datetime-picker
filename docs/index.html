@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>React Datetime Picker</title>
+  <title>(Improved) React Datetime Picker</title>
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500&amp;subset=latin,cyrillic" rel="stylesheet"
     type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
@@ -11,9 +11,9 @@
 </head>
 
 <body>
-  <h1 class="title">React Datetime Picker
+  <h1 class="title">(Improved) React Datetime Picker
     <div class="buttons">
-      <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker" data-icon="octicon-star"
+      <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker" data-size="large"
         data-count-href="/smrsan76/imrc-datetime-picker/stargazers" data-count-api="/repos/smrsan76/imrc-datetime-picker#stargazers_count"
         data-count-aria-label="# stargazers on GitHub" aria-label="Star smrsan76/imrc-datetime-picker on GitHub">Star</a>
     </div>
@@ -93,7 +93,7 @@ class App extends Component {
       'Yesterday': moment().subtract(1, 'days'),
       'Clear': ''
     };
-
+    
     return (
       &lt;DatetimePickerTrigger
         shortcuts={shortcuts} 
@@ -110,7 +110,25 @@ render(
   document.getElementById('app')
 );</code></pre>
       <div class="example">
-        <div id="popup-picker"></div>
+        <div class="popup-picker" id="popup-picker-bottom"></div>
+      </div>
+    </div>
+    <p>
+      You can also popup the datetime picker to the top position.
+      Everything is similar to the codes above, but just
+      add a 'position' attribute with 'top' value to the
+      'DatetimePickerTrigger' component.
+    </p>
+    <div class="example-code">
+      <pre><code class="language-jsx">...
+&lt;DatetimePickerTrigger
+  ...
+  position="top"&gt
+  ...
+&lt;/DatetimePickerTrigger&gt;
+...</code></pre>
+      <div class="example">
+        <div class="popup-picker" id="popup-picker-top"></div>
       </div>
     </div>
   </div>
@@ -118,7 +136,6 @@ render(
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
-  <script src="app.js"></script>
 </body>
 
 </html>

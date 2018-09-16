@@ -52,6 +52,11 @@ code {
   margin-top: 15px;
 }
 
+p {
+  float: left;
+  width: 650px;
+}
+
 .example-code {
   &:after {
     content: "";
@@ -70,7 +75,7 @@ code {
     padding-top: 50px;
 
     #inline-picker,
-    #popup-picker {
+    .popup-picker {
       display: inline-block;
     }
 
@@ -82,7 +87,7 @@ code {
       }
     }
 
-    #popup-picker {
+    .popup-picker {
       .datetime-trigger {
         text-align: left;
         cursor: pointer;
