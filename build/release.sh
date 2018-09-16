@@ -16,7 +16,7 @@ if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
 
     # commit
     git add -A
-    git commit -m "[build] ${VERSION}" || :
+    git commit -m "[build] ${VERSION}"
 
     # publish
     git push origin "v${VERSION}"
