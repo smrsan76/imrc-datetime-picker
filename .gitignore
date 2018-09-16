@@ -39,3 +39,6 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# js.org files (docs/ bundle)
+js.org/
