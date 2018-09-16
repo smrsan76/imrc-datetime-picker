@@ -243,6 +243,15 @@ See the [demo] page.
       <td>'day'</td>
       <td>Min panel for select.</td>
     </tr>
+    <tr>
+      <td>position</td>
+      <td>String</td>
+      <td>'bottom'</td>
+      <td>
+        <b><i>>= v1.0.0</i></b><br/>
+        The position of popup.
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -536,6 +545,15 @@ See the [demo] page.
       <td>String</td>
       <td>'day'</td>
       <td>Min panel for select.</td>
+    </tr>
+    <tr>
+      <td>position</td>
+      <td>String</td>
+      <td>'bottom'</td>
+      <td>
+        <b><i>>= v1.0.0</i></b><br/>
+        The position of popup.
+      </td>
     </tr>
   </tbody>
 </table>
