@@ -290,7 +290,31 @@
 
   :local(.datetime-picker) {
     position: absolute;
-    top: 100%;
+    &.pos-top {
+      top: auto;
+      bottom: 100%;
+    }
+    &.pos-top:local(.datetime-picker-popup):before {
+      top: auto;
+      bottom: -6px;
+      left: auto;
+      right: 10px;
+      border-bottom: 1px solid #dbdbdb;
+      border-left: 1px solid #dbdbdb;
+    }
+
+    &.pos-bottom {
+      top: 100%;
+      bottom: auto;
+    }
+    &.pos-bottom:local(.datetime-picker-popup):before {
+      top: -6px;
+      bottom: auto;
+      left: 10px;
+      right: auto;
+      border-top: 1px solid #dbdbdb;
+      border-right: 1px solid #dbdbdb;
+    }
   }
 }
 
@@ -299,26 +323,46 @@
 
   :local(.datetime-range-picker) {
     position: absolute;
-    top: 100%;
+    &.pos-top {
+      top: auto;
+      bottom: 100%;
+    }
+    &.pos-top:local(.datetime-range-picker-popup):before {
+      top: auto;
+      bottom: -6px;
+      left: auto;
+      right: 10px;
+      border-bottom: 1px solid #dbdbdb;
+      border-left: 1px solid #dbdbdb;
+    }
+
+    &.pos-bottom {
+      top: 100%;
+      bottom: auto;
+    }
+    &.pos-bottom:local(.datetime-range-picker-popup):before {
+      top: -6px;
+      bottom: auto;
+      left: 10px;
+      right: auto;
+      border-top: 1px solid #dbdbdb;
+      border-right: 1px solid #dbdbdb;
+    }
   }
 }
 
 :local(.datetime-picker-popup),
 :local(.datetime-range-picker-popup) {
-  margin-top: 8px;
+  margin: 8px 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   &:before {
     content: "";
     position: absolute;
     background: #fff;
-    border-top: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
     width: 10px;
     height: 10px;
     z-index: -1;
-    left: 10px;
-    top: -6px;
     transform: rotate(315deg);
   }
 }

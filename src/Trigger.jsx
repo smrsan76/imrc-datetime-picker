@@ -101,11 +101,14 @@ class Trigger extends Component {
       "children",
       "onChange"
     );
+    const { position } = props;
 
     return (
       <DatetimePicker
         {...props}
-        className={classes["datetime-picker-popup"]}
+        className={`${classes["datetime-picker-popup"]} ${
+          String(position).toLowerCase() === "top" ? "pos-top" : "pos-bottom"
+        }`}
         isOpen={isOpen}
         onChange={this.handleChange}
       />

@@ -98,11 +98,14 @@ class RangeTrigger extends Component {
       "children",
       "onChange"
     );
+    const { position } = props;
 
     return (
       <DatetimeRangePicker
         {...props}
-        className={classes["datetime-range-picker-popup"]}
+        className={`${classes["datetime-range-picker-popup"]} ${
+          String(position).toLowerCase() === "top" ? "pos-top" : "pos-bottom"
+        }`}
         isOpen={isOpen}
         onChange={this.handleChange}
       />
