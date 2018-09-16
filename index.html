@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>(Improved) React Datetime Picker</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500&amp;subset=latin,cyrillic" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
+  <script src="https://use.fontawesome.com/7fdb149223.js"></script>
+</head>
+
+<body>
+  <h1 class="title">(Improved) React Datetime Picker
+    <div class="buttons">
+      <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker" data-size="large"
+        data-count-href="/smrsan76/imrc-datetime-picker/stargazers" data-count-api="/repos/smrsan76/imrc-datetime-picker#stargazers_count"
+        data-count-aria-label="# stargazers on GitHub" aria-label="Star smrsan76/imrc-datetime-picker on GitHub">Star</a>
+    </div>
+  </h1>
+  <div class="content">
+    <div class="heading">Installation</div>
+    <div class="caption">Install with NPM</div>
+    <pre><code class="language-clike">npm install imrc-datetime-picker</code></pre>
+    <div class="caption">Manual download</div>
+    <ul>
+      <li>dist/imrc-datetime-picker.js</li>
+      <li>dist/imrc-datetime-picker.min.js</li>
+    </ul>
+    <div class="heading">Usage</div>
+    <div class="caption">Inline Mode</div>
+    <div class="example-code">
+      <pre><code class="language-jsx">import React, {Component} from 'react';
+import moment from 'moment';
+import {DatetimePicker} from 'imrc-datetime-picker';
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      moment: moment()
+    };
+  }
+
+  handleChange = (moment) => {
+    this.setState({
+      moment
+    });
+  }
+
+  render() {
+    return (
+      &lt;DatetimePicker
+        moment={this.state.moment}
+        onChange={this.handleChange}
+      /&gt;
+    );
+  }
+}
+
+render(
+  &lt;App /&gt;,
+  document.getElementById('app')
+);</code></pre>
+      <div class="example">
+        <div id="inline-picker"></div>
+      </div>
+    </div>
+
+    <div class="caption">Popup Mode</div>
+    <div class="example-code">
+      <pre><code class="language-jsx">import React, {Component} from 'react';
+import moment from 'moment';
+import {DatetimePickerTrigger} from 'imrc-datetime-picker';
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      moment: moment()
+    };
+  }
+
+  handleChange = (moment) => {
+    this.setState({
+      moment
+    });
+  }
+
+  render() {
+    const shortcuts = {
+      'Today': moment(),
+      'Yesterday': moment().subtract(1, 'days'),
+      'Clear': ''
+    };
+    
+    return (
+      &lt;DatetimePickerTrigger
+        shortcuts={shortcuts} 
+        moment={this.state.moment}
+        onChange={this.handleChange}&gt
+        &lt;input type="text" value={this.state.moment.format('YYYY-MM-DD HH:mm')} readOnly /&gt;
+      &lt;/DatetimePickerTrigger&gt;
+    );
+  }
+}
+
+render(
+  &lt;App /&gt;,
+  document.getElementById('app')
+);</code></pre>
+      <div class="example">
+        <div class="popup-picker" id="popup-picker-bottom"></div>
+      </div>
+    </div>
+    <p>
+      You can also popup the datetime picker to the top position.
+      Everything is similar to the codes above, but just
+      add a 'position' attribute with 'top' value to the
+      'DatetimePickerTrigger' component.
+    </p>
+    <div class="example-code">
+      <pre><code class="language-jsx">...
+&lt;DatetimePickerTrigger
+  ...
+  position="top"&gt
+  ...
+&lt;/DatetimePickerTrigger&gt;
+...</code></pre>
+      <div class="example">
+        <div class="popup-picker" id="popup-picker-top"></div>
+      </div>
+    </div>
+  </div>
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
+<script type="text/javascript" src="./884e27d60a3579b393e8.js"></script><script type="text/javascript" src="./index.js"></script></body>
+
+</html>
