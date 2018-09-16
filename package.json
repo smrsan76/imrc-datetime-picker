@@ -27,11 +27,12 @@
     "url": "git+https://github.com/smrsan76/imrc-datetime-picker.git"
   },
   "author": "SMRSAN",
+  "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/smrsan76/imrc-datetime-picker/issues"
   },
-  "homepage": "https://github.com/smrsan76/imrc-datetime-picker",
+  "homepage": "https://imrc-datetime-picker.js.org",
   "dependencies": {
     "blacklist": "^1.1.4",
     "classnames": "^2.2.5",
