@@ -1,5 +1,10 @@
 # imrc-datetime-picker
 
+## v1.0.1
+
+- `package.json -> homepage` :: Changed to :: [imrc-datetime-picker.js.org](https://imrc-datetime-picker.js.org)
+- `CONTRIBUTING.md` :: Changed
+
 ## v1.0.0
 
 > Sep 16, 2018
