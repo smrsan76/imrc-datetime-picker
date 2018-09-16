@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# ( ! ) These scripts are for author/maintainer's usage.
+# 
+# ( ! ) These scripts are unsafe !!!
+# Please enter the necessary ones manually in bash shell.
+#
 set -e
 echo "Enter release version: "
 read -r VERSION
