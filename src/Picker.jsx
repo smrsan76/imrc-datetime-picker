@@ -8,6 +8,8 @@ import Shortcuts from "./panels/Shortcuts.jsx";
 
 import classes from "./sass";
 
+console.log(classes);
+
 class Picker extends Component {
   constructor() {
     super();
@@ -57,7 +59,11 @@ class Picker extends Component {
               onClick={this.changePanel.bind(this, "calendar")}
               className={isCalendarPanel ? "active" : ""}
             >
-              <i className="fa fa-calendar-o" />
+              <i
+                className={`${classes["icon"]} ${
+                  classes["icon-calendar-empty"]
+                }`}
+              />
               Date
             </button>
             <button
@@ -65,7 +71,7 @@ class Picker extends Component {
               onClick={this.changePanel.bind(this, "time")}
               className={isTimePanel ? "active" : ""}
             >
-              <i className="fa fa-clock-o" />
+              <i className={`${classes["icon"]} ${classes["icon-clock"]}`} />
               Time
             </button>
           </div>

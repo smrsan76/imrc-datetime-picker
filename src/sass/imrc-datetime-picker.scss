@@ -1,3 +1,5 @@
+@import "../../assets/font-icons/css/imrc-datetime-picker-icon.css";
+
 :local(.datetime-picker) * {
   box-sizing: border-box;
 }
@@ -365,4 +367,43 @@
     z-index: -1;
     transform: rotate(315deg);
   }
+}
+
+// (Font) ICONS
+:local(.icon):before,
+:local(.icon):before {
+  font-family: "imrc-datetime-picker-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:local(.icon-clock:before) {
+  content: "\e800";
+}
+:local(.icon-angle-left:before) {
+  content: "\f104";
+}
+:local(.icon-angle-right:before) {
+  content: "\f105";
+}
+:local(.icon-calendar-empty:before) {
+  content: "\f133";
 }
