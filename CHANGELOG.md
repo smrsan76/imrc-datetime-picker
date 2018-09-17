@@ -1,5 +1,15 @@
 # imrc-datetime-picker
 
+## v1.1.0
+
+- Full `font-awesome` dependency :: Changed to :: Local selected `font-awesome` Dependency
+- Safer peerDependencies
+- `file-loader` devDependency :: Installed/Used
+
+## v1.0.2
+
+- `README` :: Fixed
+
 ## v1.0.1
 
 - `package.json -> homepage` :: Changed to :: [imrc-datetime-picker.js.org](https://imrc-datetime-picker.js.org)
