@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "imrc-datetime-picker-icons";
+  src: url("../font/imrc-datetime-picker-icons.eot?18636520");
+  src: url("../font/imrc-datetime-picker-icons.eot?18636520#iefix")
+      format("embedded-opentype"),
+    url("../font/imrc-datetime-picker-icons.woff2?18636520") format("woff2"),
+    url("../font/imrc-datetime-picker-icons.woff?18636520") format("woff"),
+    url("../font/imrc-datetime-picker-icons.ttf?18636520") format("truetype"),
+    url("../font/imrc-datetime-picker-icons.svg?18636520#imrc-datetime-picker")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
