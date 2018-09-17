@@ -6,6 +6,7 @@ const DatetimePicker = RCLOADABLE(() => import("../src/Picker"));
 const DatetimePickerTrigger = RCLOADABLE(() => import("../src/Trigger"));
 
 import "./index.scss";
+import classes from "../src/sass";
 
 class InlinePicker extends Component {
   constructor() {
@@ -29,7 +30,11 @@ class InlinePicker extends Component {
         <span className="text">
           Datetime: {moment.format("YYYY/MM/DD HH:mm")}
         </span>
-        <DatetimePicker moment={moment} onChange={this.handleChange} />
+        <DatetimePicker
+          splitPanel={true}
+          moment={moment}
+          onChange={this.handleChange}
+        />
       </div>
     );
   }
@@ -68,7 +73,9 @@ class PopupPickerBottom extends Component {
           position="bottom"
         >
           <input type="text" value={value} readOnly />
-          <span className="fa fa-calendar-o" />
+          <span
+            className={`${classes["icon"]} ${classes["icon-calendar-empty"]}`}
+          />
         </DatetimePickerTrigger>
       </React.Fragment>
     );
@@ -108,7 +115,9 @@ class PopupPickerTop extends Component {
           position="top"
         >
           <input type="text" value={value} readOnly />
-          <span className="fa fa-calendar-o" />
+          <span
+            className={`${classes["icon"]} ${classes["icon-calendar-empty"]}`}
+          />
         </DatetimePickerTrigger>
       </React.Fragment>
     );

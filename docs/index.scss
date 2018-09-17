@@ -97,9 +97,11 @@ p {
         height: 30px;
         padding: 0 8px;
         border: 1px solid #ddd;
+        vertical-align: middle;
       }
 
-      .fa-calendar-o {
+      span {
+        display: inline-block;
         background-color: #f5f5f5;
         border: 1px solid #ddd;
         height: 30px;
