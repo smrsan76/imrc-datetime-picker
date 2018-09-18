@@ -2,9 +2,15 @@
 
 Imrc-Datetime-Picker is a react component for datetime picker by [Moment.js].
 
+[![NPM](https://nodei.co/npm/imrc-datetime-picker.png)](https://nodei.co/npm/imrc-datetime-picker/)
+
 Thanks to [~allenwu](https://www.npmjs.com/~allenwu) for authoring the base package [`rc-datetime-picker`](https://npmjs.com/package/rc-datetime-picker)
 
-[**See The **`ChangeLog`** Here**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CHANGELOG.md)
+[**See The `ChangeLog` Here**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CHANGELOG.md)
+
+> Note: Check the [**TODO.md**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CHANGELOG.md)
+> file before usage. Maybe some features are still **buggy 💀** since the [`rc-datetime-picker`](https://npmjs.com/package/rc-datetime-picker) package
+> or recently in the current package.
 
 ## Requirements
 
@@ -26,6 +32,8 @@ Besides npm package, UMD module is placed under `dist/` directory:
 
 - dist/imrc-datetime-picker.js
 - dist/imrc-datetime-picker-min.js
+- dist/imrc-datetime-picker.css
+- dist/imrc-datetime-picker.min.css
 
 ## Usage
 
@@ -557,3 +565,11 @@ See the [demo] page.
     </tr>
   </tbody>
 </table>
+
+## Contributing
+
+We really appreciate your contributions.
+
+You can follow the rules of
+[**Contributing guide**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CONTRIBUTING.md)
+to contribute with us.
