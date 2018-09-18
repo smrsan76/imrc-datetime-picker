@@ -1,8 +1,24 @@
 # imrc-datetime-picker
 
+## v1.3.0
+
+- (**Breaking**) All class names of the package, are used in local mode
+- Prettier codes
+- Webpack bundle updated
+- TODO.md :: Added
+- CONTRIBUTING.md :: Updated
+- README.md :: Updated
+- `mini-css-extract-plugin` :: Used in :: Dev mode for bundle
+
+- (**Bug**) :: Time picker react-slider
+
+## v1.2.0
+
+- CSS importing is required
+
 ## v1.1.0
 
-- Full `font-awesome` dependency :: Changed to :: Local selected `font-awesome` Dependency
+- (**Breaking**) Full `font-awesome` dependency :: Changed to :: Local selected `font-awesome` Dependency
 - Safer peerDependencies
 - `file-loader` devDependency :: Installed/Used
 
