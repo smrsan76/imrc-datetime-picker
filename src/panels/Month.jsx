@@ -127,12 +127,12 @@ class Month extends Component {
 
     const isDisabled = disabledMax || disabledMin || disabled || limited;
     const className = classNames({
-      selected: isSelected,
-      now: now.isSame(currentMonth, "month"),
-      disabled: isDisabled,
-      start,
-      end,
-      between
+      [classes["selected"]]: isSelected,
+      [classes["now"]]: now.isSame(currentMonth, "month"),
+      [classes["disabled"]]: isDisabled,
+      [classes["start"]]: start,
+      [classes["end"]]: end,
+      [classes["between"]]: between
     });
 
     return (
@@ -152,8 +152,8 @@ class Month extends Component {
     const { changePanel, style } = this.props;
 
     return (
-      <div className="calendar-months" style={style}>
-        <div className="calendar-nav">
+      <div className={classes["calendar-months"]} style={style}>
+        <div className={classes["calendar-nav"]}>
           <button
             type="button"
             className="prev-month"
@@ -162,7 +162,7 @@ class Month extends Component {
             <i className={`${classes["icon"]} ${classes["icon-angle-left"]}`} />
           </button>
           <span
-            className="current-date"
+            className={classes["current-date"]}
             onClick={changePanel.bind(this, "year", _moment)}
           >
             {_moment.format("YYYY")}

@@ -10,6 +10,8 @@ import {
   END_DATE_TEXT
 } from "./constants.js";
 
+import classes from "./sass";
+
 class Range extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +64,10 @@ class Range extends Component {
     } = this.props;
     const formatStyle =
       format || (showTimePicker ? "YYYY/MM/DD HH:mm" : "YYYY/MM/DD");
-    const className = classNames("datetime-range-picker", this.props.className);
+    const className = classNames(
+      classes["datetime-range-picker"],
+      this.props.className
+    );
     const props = blacklist(
       this.props,
       "className",
@@ -89,7 +94,11 @@ class Range extends Component {
             undefined
           )}
           <div className="buttons">
-            <button type="button" className="btn" onClick={this.onConfirm}>
+            <button
+              type="button"
+              className={classes["btn"]}
+              onClick={this.onConfirm}
+            >
               {confirmButtonText}
             </button>
           </div>

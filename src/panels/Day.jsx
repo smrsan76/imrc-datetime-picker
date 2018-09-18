@@ -133,14 +133,14 @@ class Day extends Component {
 
     const isDisabled = disabledMax || disabledMin || disabled || limited;
     const className = classNames({
-      prev: isPrevMonth,
-      next: isNextMonth,
-      selected: isSelected,
-      now: now.isSame(currentDay, "day"),
-      disabled: isDisabled,
-      start,
-      end,
-      between
+      [classes["prev"]]: isPrevMonth,
+      [classes["next"]]: isNextMonth,
+      [classes["selected"]]: isSelected,
+      [classes["now"]]: now.isSame(currentDay, "day"),
+      [classes["disabled"]]: isDisabled,
+      [classes["start"]]: start,
+      [classes["end"]]: end,
+      [classes["between"]]: between
     });
 
     return (
@@ -189,8 +189,8 @@ class Day extends Component {
     );
 
     return (
-      <div className="calendar-days" style={style}>
-        <div className="calendar-nav">
+      <div className={classes["calendar-days"]} style={style}>
+        <div className={classes["calendar-nav"]}>
           <button
             type="button"
             className="prev-month"
@@ -199,7 +199,7 @@ class Day extends Component {
             <i className={`${classes["icon"]} ${classes["icon-angle-left"]}`} />
           </button>
           <span
-            className="current-date"
+            className={classes["current-date"]}
             onClick={changePanel.bind(this, "month", _moment)}
           >
             {_moment.format(dayFormat)}

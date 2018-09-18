@@ -104,7 +104,9 @@ class RangeTrigger extends Component {
       <DatetimeRangePicker
         {...props}
         className={`${classes["datetime-range-picker-popup"]} ${
-          String(position).toLowerCase() === "top" ? "pos-top" : "pos-bottom"
+          String(position).toLowerCase() === "top"
+            ? classes["pos-top"]
+            : classes["pos-bottom"]
         }`}
         isOpen={isOpen}
         onChange={this.handleChange}

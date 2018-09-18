@@ -122,14 +122,14 @@ class Year extends Component {
 
     const isDisabled = disabledMax || disabledMin || disabled || limited;
     const className = classNames({
-      selected: isSelected,
-      now: now.year() === year,
-      prev: firstYear - 1 === year,
-      next: firstYear + 10 === year,
-      disabled: isDisabled,
-      start,
-      end,
-      between
+      [classes["selected"]]: isSelected,
+      [classes["now"]]: now.year() === year,
+      [classes["prev"]]: firstYear - 1 === year,
+      [classes["next"]]: firstYear + 10 === year,
+      [classes["disabled"]]: isDisabled,
+      [classes["start"]]: start,
+      [classes["end"]]: end,
+      [classes["between"]]: between
     });
 
     return (
@@ -150,8 +150,8 @@ class Year extends Component {
     const years = range(firstYear - 1, firstYear + 11);
 
     return (
-      <div className="calendar-years" style={style}>
-        <div className="calendar-nav">
+      <div className={classes["calendar-years"]} style={style}>
+        <div className={classes["calendar-nav"]}>
           <button
             type="button"
             className="prev-month"
@@ -159,7 +159,7 @@ class Year extends Component {
           >
             <i className={`${classes["icon"]} ${classes["icon-angle-left"]}`} />
           </button>
-          <span className="current-date disabled">
+          <span className={`${classes["current-date"]} ${classes["disabled"]}`}>
             {firstYear} - {firstYear + 9}
           </span>
           <button

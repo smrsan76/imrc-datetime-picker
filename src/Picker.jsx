@@ -8,8 +8,6 @@ import Shortcuts from "./panels/Shortcuts.jsx";
 
 import classes from "./sass";
 
-console.log(classes);
-
 class Picker extends Component {
   constructor() {
     super();

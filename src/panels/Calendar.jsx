@@ -1,17 +1,18 @@
-import React, {Component} from 'react';
-// import moment from 'moment';
-const moment = require('moment');
+import React, { Component } from "react";
+const moment = require("moment");
 
-import Day from './Day.jsx';
-import Month from './Month.jsx';
-import Year from './Year.jsx';
+import Day from "./Day.jsx";
+import Month from "./Month.jsx";
+import Year from "./Year.jsx";
+
+import classes from "../sass";
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       moment: this.getCurrentMoment(props),
-      panel: props.minPanel || 'day'
+      panel: props.minPanel || "day"
     };
   }
 
@@ -22,13 +23,13 @@ class Calendar extends Component {
 
     if (!props.isOpen) {
       this.setState({
-        panel: props.minPanel || 'day'
+        panel: props.minPanel || "day"
       });
     }
   }
 
-  getCurrentMoment = (props) => {
-    const {range, rangeAt} = props;
+  getCurrentMoment = props => {
+    const { range, rangeAt } = props;
     const now = this.state ? this.state.moment || moment() : moment();
     let result = props.moment;
 
@@ -41,50 +42,65 @@ class Calendar extends Component {
     }
 
     return result;
-  }
+  };
 
-  handleSelect = (selected) => {
-    const {panel} = this.state;
-    const {onChange, range, rangeAt, minPanel} = this.props;
-    const nextPanel = (panel === 'year' ? 'month' : 'day') === 'month' 
-      ? minPanel === 'year' ? 'year' : 'month'
-      : minPanel === 'month' ? 'month' : 'day';
+  handleSelect = selected => {
+    const { panel } = this.state;
+    const { onChange, range, rangeAt, minPanel } = this.props;
+    const nextPanel =
+      (panel === "year" ? "month" : "day") === "month"
+        ? minPanel === "year"
+          ? "year"
+          : "month"
+        : minPanel === "month"
+          ? "month"
+          : "day";
     let _selected = this.props.moment;
     let shouldChange = panel === minPanel;
 
     if (_selected && !shouldChange) {
       if (range) {
-        shouldChange = rangeAt === 'start' ? _selected.start : _selected.end;
+        shouldChange = rangeAt === "start" ? _selected.start : _selected.end;
       } else {
         shouldChange = true;
       }
     }
 
     if (range) {
-      const copyed = _selected ? {..._selected} : {};
+      const copyed = _selected ? { ..._selected } : {};
 
       copyed[rangeAt] = selected;
       _selected = copyed;
     } else {
       _selected = selected;
     }
-    
+
     this.changePanel(nextPanel, selected);
 
     if (shouldChange) {
       onChange && onChange(_selected, panel);
     }
-  }
+  };
 
   changePanel = (panel, moment = this.state.moment) => {
     this.setState({
       moment,
       panel
     });
-  }
+  };
 
   render() {
-    const {weeks, months, dayFormat, style, maxDate, minDate, dateLimit, range, rangeAt} = this.props;
+    const {
+      weeks,
+      months,
+      dayFormat,
+      style,
+      maxDate,
+      minDate,
+      dateLimit,
+      range,
+      rangeAt
+    } = this.props;
     const props = {
       moment: this.state.moment,
       selected: this.props.moment,
@@ -99,28 +115,27 @@ class Calendar extends Component {
       range,
       rangeAt
     };
-    const {panel} = this.state;
-    const isDayPanel = panel === 'day';
-    const isMonthPanel = panel === 'month';
-    const isYearPanel = panel === 'year';
+    const { panel } = this.state;
+    const isDayPanel = panel === "day";
+    const isMonthPanel = panel === "month";
+    const isYearPanel = panel === "year";
 
     return (
       <div style={style}>
-        <div className="calendar">
-          <Day 
+        <div className={classes["calendar"]}>
+          <Day {...props} style={{ display: isDayPanel ? "block" : "none" }} />
+          <Month
             {...props}
-            style={{display: isDayPanel ? 'block' : 'none'}} />
-          <Month 
+            style={{ display: isMonthPanel ? "block" : "none" }}
+          />
+          <Year
             {...props}
-            style={{display: isMonthPanel ? 'block' : 'none'}} />
-          <Year 
-            {...props}
-            style={{display: isYearPanel ? 'block' : 'none'}} />
+            style={{ display: isYearPanel ? "block" : "none" }}
+          />
         </div>
       </div>
     );
   }
 }
-
 
 export default Calendar;

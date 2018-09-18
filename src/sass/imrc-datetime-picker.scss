@@ -16,8 +16,8 @@
   box-sizing: content-box;
   z-index: 100;
 
-  .calendar {
-    .calendar-nav {
+  :local(.calendar) {
+    :local(.calendar-nav) {
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid #efefef;
@@ -33,7 +33,7 @@
         outline: none;
         cursor: pointer;
 
-        .fa {
+        :local(.icon) {
           font-size: 18px;
         }
 
@@ -42,7 +42,7 @@
         }
       }
 
-      .current-date {
+      :local(.current-date) {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -54,7 +54,7 @@
           background-color: #f0f0f0;
         }
 
-        &.disabled {
+        &:local(.disabled) {
           cursor: default;
         }
       }
@@ -110,9 +110,9 @@
               background-color: #f0f0f0;
             }
 
-            &.prev,
-            &.next,
-            &.disabled {
+            &:local(.prev),
+            &:local(.next),
+            &:local(.disabled) {
               color: #dedede;
 
               &:hover {
@@ -120,7 +120,7 @@
               }
             }
 
-            &.disabled {
+            &:local(.disabled) {
               &:hover {
                 color: #dedede;
                 background-color: transparent;
@@ -128,12 +128,12 @@
               }
             }
 
-            &.now {
+            &:local(.now) {
               color: #5cc4ef;
               font-weight: 400;
             }
 
-            &.selected {
+            &:local(.selected) {
               background-color: #5cc4ef;
               color: #fff;
               font-weight: 400;
@@ -143,22 +143,22 @@
                 color: #fff;
               }
 
-              &.start {
+              &:local(.start) {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
               }
 
-              &.end {
+              &:local(.end) {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
               }
 
-              &.start.end {
+              &:local(.start):local(.end) {
                 border-radius: 4px;
               }
             }
 
-            &.between {
+            &:local(.between) {
               background-color: lighten(#5cc4ef, 33%);
               border-radius: 0;
             }
@@ -167,29 +167,29 @@
       }
     }
 
-    .calendar-days table tbody tr td {
+    :local(.calendar-days) table tbody tr td {
       width: calc(100% / 7);
     }
 
-    .calendar-months table tbody tr td {
+    :local(.calendar-months) table tbody tr td {
       width: calc(100% / 3);
       height: 40px;
     }
 
-    .calendar-years table tbody tr td {
+    :local(.calendar-years) table tbody tr td {
       width: calc(100% / 4);
       height: 60px;
     }
   }
 
-  .time {
+  :local(.time) {
     border-top: 1px solid #efefef;
     padding: 4px;
     display: flex;
     align-items: center;
     position: relative;
 
-    .show-time {
+    :local(.show-time) {
       display: flex;
       align-items: center;
       flex: 1;
@@ -197,30 +197,35 @@
       text-align: center;
       margin: 0 0 0 10px;
 
-      .text {
+      %time-content {
         line-height: 1;
+      }
+
+      :local(.text) {
+        @extend %time-content;
         font-size: 19px;
         font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
         position: relative;
         z-index: 1;
       }
 
-      .separater {
+      :local(.separater) {
+        @extend %time-content;
         margin: 0 2px 3px;
-        line-height: 1;
+        padding: 5px 0 0 0;
       }
     }
 
-    .sliders {
+    :local(.sliders) {
       flex: 0 1 153px;
       margin-right: 10px;
       max-width: 153px;
 
-      .slider-text {
+      :local(.slider-text) {
         display: none;
       }
 
-      .slider {
+      :local(.slider) {
         display: flex;
         align-items: center;
         font-size: 11px;
@@ -229,8 +234,9 @@
         background-position: 0 50%;
         background-size: 100% 1px;
         background-repeat: no-repeat;
+        cursor: pointer;
 
-        .handle {
+        :local(.handle) {
           width: 12px;
           height: 12px;
           background-color: #fff;
@@ -252,11 +258,11 @@
     }
   }
 
-  .shortcuts-bar {
+  :local(.shortcuts-bar) {
     border-bottom: 1px solid #efefef;
     padding: 8px;
 
-    .btn {
+    :local(.btn) {
       border: 0;
       background: none;
       cursor: pointer;
@@ -292,11 +298,11 @@
 
   :local(.datetime-picker) {
     position: absolute;
-    &.pos-top {
+    &:local(.pos-top) {
       top: auto;
       bottom: 100%;
     }
-    &.pos-top:local(.datetime-picker-popup):before {
+    &:local(.pos-top):local(.datetime-picker-popup):before {
       top: auto;
       bottom: -6px;
       left: auto;
@@ -305,11 +311,11 @@
       border-left: 1px solid #dbdbdb;
     }
 
-    &.pos-bottom {
+    &:local(.pos-bottom) {
       top: 100%;
       bottom: auto;
     }
-    &.pos-bottom:local(.datetime-picker-popup):before {
+    &:local(.pos-bottom):local(.datetime-picker-popup):before {
       top: -6px;
       bottom: auto;
       left: 10px;
@@ -325,11 +331,11 @@
 
   :local(.datetime-range-picker) {
     position: absolute;
-    &.pos-top {
+    &:local(.pos-top) {
       top: auto;
       bottom: 100%;
     }
-    &.pos-top:local(.datetime-range-picker-popup):before {
+    &:local(.pos-top):local(.datetime-range-picker-popup):before {
       top: auto;
       bottom: -6px;
       left: auto;
@@ -338,11 +344,11 @@
       border-left: 1px solid #dbdbdb;
     }
 
-    &.pos-bottom {
+    &:local(.pos-bottom) {
       top: 100%;
       bottom: auto;
     }
-    &.pos-bottom:local(.datetime-range-picker-popup):before {
+    &:local(.pos-bottom):local(.datetime-range-picker-popup):before {
       top: -6px;
       bottom: auto;
       left: 10px;
