@@ -3,6 +3,7 @@ import { argv } from "yargs";
 import webpack from "webpack";
 import Fiber from "fibers";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const env = argv.env;
 const isDevelopment = env === "development";
@@ -41,14 +42,15 @@ const config = {
         test: /\.(c|sa|sc)ss$/,
         exclude: /node_modules/,
         use: [
-          { loader: "style-loader" },
+          isDevelopment
+            ? { loader: "style-loader" }
+            : { loader: MiniCssExtractPlugin.loader },
           { loader: "css-loader", options: { sourceMap: isDevelopment } },
           {
             loader: "sass-loader",
             options: {
               implementation: require("sass"),
-              fiber: Fiber,
-              sourceMap: isDevelopment
+              fiber: Fiber
             }
           }
         ]
@@ -87,6 +89,10 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "docs/index.html"),
       chunksSortMode: "none"
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
   ]
 };

@@ -1,4 +1,5 @@
 import path from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const libraryName = require("./package.json").name;
 const nodeModulesPath = path.resolve(__dirname, "./node_modules");
@@ -12,7 +13,7 @@ export default env => {
     },
     output: {
       library: libraryName,
-      publicPath: "/dist/",
+      publicPath: "",
       umdNamedDefine: true,
       libraryTarget: "umd",
       path: path.resolve(__dirname, "./dist"),
@@ -30,7 +31,9 @@ export default env => {
           test: /\.*css$/,
           exclude: [nodeModulesPath],
           use: [
-            { loader: "style-loader" },
+            {
+              loader: MiniCssExtractPlugin.loader
+            },
             { loader: "css-loader" },
             {
               loader: "sass-loader",
@@ -68,7 +71,12 @@ export default env => {
         "react-dom": path.resolve(__dirname, "./node_modules/react-dom")
       }
     },
-    plugins: []
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: `[name]${minify ? ".min" : ""}.css`,
+        chunkFilename: `[id]${minify ? ".min" : ""}.css`
+      })
+    ]
   };
 
   return config;
