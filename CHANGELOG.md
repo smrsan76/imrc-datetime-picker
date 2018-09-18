@@ -3,6 +3,7 @@
 ## v1.3.0
 
 - (**Breaking**) All class names of the package, are used in local mode
+- (**Breaking**) CSS importing is required
 - Prettier codes
 - Webpack bundle updated
 - TODO.md :: Added
@@ -11,10 +12,6 @@
 - `mini-css-extract-plugin` :: Used in :: Dev mode for bundle
 
 - (**Bug**) :: Time picker react-slider
-
-## v1.2.0
-
-- CSS importing is required
 
 ## v1.1.0
 
