@@ -1,12 +1,35 @@
+import "babel-polyfill";
 import React, { Component } from "react";
 import { render } from "react-dom";
-import moment from "moment";
+const moment = require("moment");
 
-const DatetimePicker = RCLOADABLE(() => import("../src/Picker"));
-const DatetimePickerTrigger = RCLOADABLE(() => import("../src/Trigger"));
+import "../src/sass";
+
+// Production Test/Use
+const DatetimePicker = RCLOADABLE(
+  () => import("../dist/imrc-datetime-picker.min.js"),
+  {
+    render: (loaded, props) => {
+      const { DatetimePicker } = loaded;
+      return <DatetimePicker {...props} />;
+    }
+  }
+);
+const DatetimePickerTrigger = RCLOADABLE(
+  () => import("../dist/imrc-datetime-picker.min.js"),
+  {
+    render: (loaded, props) => {
+      const { DatetimePickerTrigger } = loaded;
+      return <DatetimePickerTrigger {...props} />;
+    }
+  }
+);
+
+// Development Test (HMR)
+// import { DatetimePicker, DatetimePickerTrigger } from "../src";
 
 import "./index.scss";
-import classes from "../src/sass";
+import classes from "./index.scss";
 
 class InlinePicker extends Component {
   constructor() {
@@ -27,13 +50,11 @@ class InlinePicker extends Component {
 
     return (
       <div>
-        <span className="text">
-          Datetime: {moment.format("YYYY/MM/DD HH:mm")}
-        </span>
+        <span className="text">Datetime: {moment.format("YYYY/MM/DD")}</span>
         <DatetimePicker
-          splitPanel={true}
           moment={moment}
           onChange={this.handleChange}
+          showTimePicker={false}
         />
       </div>
     );
@@ -61,7 +82,7 @@ class PopupPickerBottom extends Component {
       Clear: ""
     };
     const { datetime } = this.state;
-    const value = datetime ? datetime.format("YYYY/MM/DD HH:mm") : "";
+    const value = datetime ? datetime.format("YYYY/MM/DD") : "";
 
     return (
       <React.Fragment>
@@ -70,11 +91,14 @@ class PopupPickerBottom extends Component {
           moment={datetime}
           onChange={this.handleChange}
           appendToBoddy={true}
+          showTimePicker={false}
           position="bottom"
         >
           <input type="text" value={value} readOnly />
           <span
-            className={`${classes["icon"]} ${classes["icon-calendar-empty"]}`}
+            className={`input-icon ${classes["icon"]} ${
+              classes["icon-calendar-empty"]
+            }`}
           />
         </DatetimePickerTrigger>
       </React.Fragment>
@@ -103,7 +127,7 @@ class PopupPickerTop extends Component {
       Clear: ""
     };
     const { datetime } = this.state;
-    const value = datetime ? datetime.format("YYYY/MM/DD HH:mm") : "";
+    const value = datetime ? datetime.format("YYYY/MM/DD") : "";
 
     return (
       <React.Fragment>
@@ -112,11 +136,14 @@ class PopupPickerTop extends Component {
           moment={datetime}
           onChange={this.handleChange}
           appendToBoddy={true}
+          showTimePicker={false}
           position="top"
         >
           <input type="text" value={value} readOnly />
           <span
-            className={`${classes["icon"]} ${classes["icon-calendar-empty"]}`}
+            className={`input-icon ${classes["icon"]} ${
+              classes["icon-calendar-empty"]
+            }`}
           />
         </DatetimePickerTrigger>
       </React.Fragment>
