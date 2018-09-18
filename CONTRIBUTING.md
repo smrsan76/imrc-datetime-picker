@@ -4,7 +4,14 @@ It's very easy..!
 
 Just, follow these guidelines before any contribution:
 
-## Src
+## ToDo
+
+- Check the content of
+  [**ToDo**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/TODO.md)
+  file and make sure you have followed the rules below in the **SRC** and/or **Documentation** section.
+- OR you could refer to the **Issues & Bugs** section for reporting the issues and problems.
+
+## SRC
 
 - Fork the project.
 - Clone `gh-pages` branch into `/path/to/repo/js.org` path.
