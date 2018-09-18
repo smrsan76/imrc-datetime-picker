@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 const moment = require("moment");
 
-import "../src/sass";
+import "../dist/imrc-datetime-picker.min.css";
 
 // Production Test/Use
 const DatetimePicker = RCLOADABLE(

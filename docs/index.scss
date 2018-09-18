@@ -100,7 +100,7 @@ p {
         vertical-align: middle;
       }
 
-      span {
+      .input-icon {
         display: inline-block;
         background-color: #f5f5f5;
         border: 1px solid #ddd;
@@ -112,4 +112,34 @@ p {
       }
     }
   }
+}
+
+// (Font) ICONS
+:local(.icon):before,
+:local(.icon):before {
+  font-family: "imrc-datetime-picker-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:local(.icon-calendar-empty:before) {
+  content: "\f133";
 }
