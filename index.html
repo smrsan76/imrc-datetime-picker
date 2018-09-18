@@ -8,7 +8,7 @@
     type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
   <!-- <script src="https://use.fontawesome.com/7fdb149223.js"></script> -->
-</head>
+<link href="./2.css" rel="stylesheet"></head>
 
 <body>
   <h1 class="title">(Improved) React Datetime Picker
@@ -32,6 +32,8 @@
     <div class="example-code">
       <pre><code class="language-jsx">import React, {Component} from 'react';
 import moment from 'moment';
+
+import "imrc-datetime-picker/dist/imrc-datetime-picker.css";
 import {DatetimePicker} from 'imrc-datetime-picker';
 
 class App extends Component {
@@ -54,6 +56,7 @@ class App extends Component {
         splitPanel={true}
         moment={this.state.moment}
         onChange={this.handleChange}
+        showTimePicker={false}
       /&gt;
     );
   }
@@ -72,6 +75,8 @@ render(
     <div class="example-code">
       <pre><code class="language-jsx">import React, {Component} from 'react';
 import moment from 'moment';
+
+import "imrc-datetime-picker/dist/imrc-datetime-picker.css";
 import {DatetimePickerTrigger} from 'imrc-datetime-picker';
 
 class App extends Component {
@@ -99,7 +104,8 @@ class App extends Component {
       &lt;DatetimePickerTrigger
         shortcuts={shortcuts} 
         moment={this.state.moment}
-        onChange={this.handleChange}&gt
+        onChange={this.handleChange}
+        showTimePicker={false}&gt
         &lt;input type="text" value={this.state.moment.format('YYYY-MM-DD HH:mm')} readOnly /&gt;
       &lt;/DatetimePickerTrigger&gt;
     );
@@ -137,6 +143,6 @@ render(
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
-<script type="text/javascript" src="./index.js"></script><script type="text/javascript" src="./d3d66b319d419a11a26e.js"></script></body>
+<script type="text/javascript" src="./index.js"></script><script type="text/javascript" src="./6b559974e553f22555e7.js"></script></body>
 
 </html>
