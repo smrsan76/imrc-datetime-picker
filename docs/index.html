@@ -16,16 +16,22 @@
       <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker" data-size="large"
         data-count-href="/smrsan76/imrc-datetime-picker/stargazers" data-count-api="/repos/smrsan76/imrc-datetime-picker#stargazers_count"
         data-count-aria-label="# stargazers on GitHub" aria-label="Star smrsan76/imrc-datetime-picker on GitHub">Star</a>
+      <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker/fork" data-icon="octicon-repo-forked"
+        data-size="large" data-show-count="true" aria-label="Fork smrsan76/imrc-datetime-picker on GitHub">Fork</a>
     </div>
   </h1>
   <div class="content">
     <div class="heading">Installation</div>
     <div class="caption">Install with NPM</div>
-    <pre><code class="language-clike">npm install imrc-datetime-picker</code></pre>
+    <a href="https://nodei.co/npm/imrc-datetime-picker/" title="NPM" style="display: block;text-align: center">
+      <img src="https://nodei.co/npm/imrc-datetime-picker.png" />
+    </a>
     <div class="caption">Manual download</div>
     <ul>
       <li>dist/imrc-datetime-picker.js</li>
       <li>dist/imrc-datetime-picker.min.js</li>
+      <li>dist/imrc-datetime-picker.css</li>
+      <li>dist/imrc-datetime-picker.min.css</li>
     </ul>
     <div class="heading">Usage</div>
     <div class="caption">Inline Mode</div>
@@ -106,7 +112,7 @@ class App extends Component {
         moment={this.state.moment}
         onChange={this.handleChange}
         showTimePicker={false}&gt
-        &lt;input type="text" value={this.state.moment.format('YYYY-MM-DD HH:mm')} readOnly /&gt;
+        &lt;input type="text" value={this.state.moment.format('YYYY-MM-DD')} readOnly /&gt;
       &lt;/DatetimePickerTrigger&gt;
     );
   }
