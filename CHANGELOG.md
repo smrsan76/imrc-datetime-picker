@@ -1,5 +1,9 @@
 # imrc-datetime-picker
 
+## v1.3.1
+
+- Docs & README.md :: Updated
+
 ## v1.3.0
 
 - (**Breaking**) All class names of the package, are used in local mode

@@ -8,7 +8,7 @@ Thanks to [~allenwu](https://www.npmjs.com/~allenwu) for authoring the base pack
 
 [**See The `ChangeLog` Here**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CHANGELOG.md)
 
-> Note: Check the [**TODO.md**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/CHANGELOG.md)
+> Note: Check the [**TODO.md**](https://github.com/smrsan76/imrc-datetime-picker/blob/master/TODO.md)
 > file before usage. Maybe some features are still **buggy 💀** since the [`rc-datetime-picker`](https://npmjs.com/package/rc-datetime-picker) package
 > or recently in the current package.
 
@@ -28,7 +28,7 @@ $ npm install imrc-datetime-picker
 
 ### Manual download
 
-Besides npm package, UMD module is placed under `dist/` directory:
+Besides npm package, UMD module and styles are placed under `dist/` directory:
 
 - dist/imrc-datetime-picker.js
 - dist/imrc-datetime-picker-min.js
