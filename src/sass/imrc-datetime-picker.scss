@@ -305,8 +305,8 @@
     &:local(.pos-top):local(.datetime-picker-popup):before {
       top: auto;
       bottom: -6px;
-      left: auto;
-      right: 10px;
+      left: 10px;
+      right: auto;
       border-bottom: 1px solid #dbdbdb;
       border-left: 1px solid #dbdbdb;
     }
@@ -338,8 +338,8 @@
     &:local(.pos-top):local(.datetime-range-picker-popup):before {
       top: auto;
       bottom: -6px;
-      left: auto;
-      right: 10px;
+      left: 10px;
+      right: auto;
       border-bottom: 1px solid #dbdbdb;
       border-left: 1px solid #dbdbdb;
     }
