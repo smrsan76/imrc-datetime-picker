@@ -1,5 +1,9 @@
 # imrc-datetime-picker
 
+## v1.3.2
+
+- The style of bottom arrow for top popup :: Changed
+
 ## v1.3.1
 
 - Docs & README.md :: Updated
