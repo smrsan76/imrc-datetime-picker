@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-const moment = require("moment");
+const moment = require("moment-jalaali");
 
 import Day from "./Day.jsx";
 import Month from "./Month.jsx";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactSlider from "react-slider";
-const moment = require("moment");
+const moment = require("moment-jalaali");
 
 import classes from "../sass";
 

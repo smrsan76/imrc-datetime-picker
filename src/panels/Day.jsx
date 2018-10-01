@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import moment from "moment";
+const moment = require("moment-jalaali");
 import classNames from "classnames/bind";
 
 import { WEEKS, DAY_FORMAT } from "../constants";
