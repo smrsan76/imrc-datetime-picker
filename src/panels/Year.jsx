@@ -172,7 +172,7 @@ class Year extends Component {
           </button>
           <span className={`${classes["current-date"]} ${classes["disabled"]}`}>
             {lang == "fa"
-              ? `${convertNumToPersiann(firstYear)} - ${convertNumToPersiann(
+              ? `${convertNumToPersian(firstYear)} - ${convertNumToPersian(
                   firstYear + 9
                 )}`
               : `${firstYear} - ${firstYear + 9}`}
