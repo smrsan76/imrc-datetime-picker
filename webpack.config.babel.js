@@ -57,6 +57,7 @@ export default env => {
     },
     externals: {
       moment: "moment",
+      "moment-jalaali": "moment-jalaali",
       react: "react",
       "react-dom": "react-dom"
     },
@@ -67,6 +68,10 @@ export default env => {
       extensions: [".js", ".jsx", ".json"],
       alias: {
         moment: path.resolve(__dirname, "./node_modules/moment"),
+        "moment-jalaali": path.resolve(
+          __dirname,
+          "./node_modules/moment-jalaali"
+        ),
         react: path.resolve(__dirname, "./node_modules/react"),
         "react-dom": path.resolve(__dirname, "./node_modules/react-dom")
       }
