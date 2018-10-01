@@ -2,17 +2,8 @@ import React, { Component } from "react";
 const moment = require("moment-jalaali");
 import classNames from "classnames/bind";
 
-import { WEEKS, DAY_FORMAT } from "../constants";
-import { range as arrayRange, chunk } from "../utils";
-
-import {
-  WEEKS,
-  WEEKS_FA,
-  WEEKS_SOLAR,
-  WEEKS_SOLAR_FA,
-  DAY_FORMAT,
-  DAY_FORMAT_SOLAR
-} from "../constants";
+import { WEEKS, WEEKS_FA, DAY_FORMAT, DAY_FORMAT_SOLAR } from "../constants";
+import { range as arrayRange, chunk, convertNumToPersian } from "../utils";
 
 import classes from "../sass";
 
@@ -177,7 +168,7 @@ class Day extends Component {
           isNextMonth
         )}
       >
-        {lang == "fa" ? convertNumToPersiann(day) : day}
+        {lang == "fa" ? convertNumToPersian(day) : day}
       </td>
     );
   };
@@ -186,13 +177,7 @@ class Day extends Component {
     const {
       isSolar,
       lang,
-      weeks = isSolar
-        ? lang == "fa"
-          ? WEEKS_SOLAR_FA
-          : WEEKS_SOLAR
-        : lang == "fa"
-          ? WEEKS_FA
-          : WEEKS,
+      weeks = lang == "fa" ? WEEKS_FA : WEEKS,
       dayFormat = isSolar ? DAY_FORMAT_SOLAR : DAY_FORMAT,
       style,
       changePanel
