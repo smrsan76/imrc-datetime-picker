@@ -74,7 +74,7 @@ export const END_DATE_TEXT_FA = "تاریخ پایان:";
 export const CUSTOM_BUTTON_TEXT = "Custom";
 export const CUSTOM_BUTTON_TEXT_FA = "انتخابی";
 
-export const PERSIANN_NUMBERS = [
+export const PERSIAN_NUMBERS = [
   "۰",
   "۱",
   "۲",
