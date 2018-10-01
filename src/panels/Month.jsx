@@ -2,7 +2,7 @@ import React, { Component } from "react";
 const moment = require("moment-jalaali");
 import classNames from "classnames/bind";
 
-import { MONTHS } from "../constants";
+import { MONTHS, MONTHS_FA, MONTHS_SOLAR, MONTHS_SOLAR_FA } from "../constants";
 import { chunk } from "../utils";
 
 import classes from "../sass";
@@ -10,22 +10,47 @@ import classes from "../sass";
 class Month extends Component {
   constructor(props) {
     super(props);
+    const { isSolar, lang } = props;
+
     this.state = {
-      moment: props.moment
+      moment: props.moment,
+      yearStr: isSolar ? "jYear" : "year",
+      monthStr: isSolar ? "jMonth" : "month",
+      dateStr: isSolar ? "jDate" : "date",
+      months: isSolar
+        ? lang == "fa"
+          ? MONTHS_SOLAR_FA
+          : MONTHS_SOLAR
+        : lang == "fa"
+          ? MONTHS_FA
+          : MONTHS
     };
   }
 
   componentWillReceiveProps(props) {
+    const { isSolar, lang } = props;
+
     this.setState({
-      moment: props.moment
+      moment: props.moment,
+      yearStr: isSolar ? "jYear" : "year",
+      monthStr: isSolar ? "jMonth" : "month",
+      dateStr: isSolar ? "jDate" : "date",
+      months: isSolar
+        ? lang == "fa"
+          ? MONTHS_SOLAR_FA
+          : MONTHS_SOLAR
+        : lang == "fa"
+          ? MONTHS_FA
+          : MONTHS
     });
   }
 
   changeYear = dir => {
     const _moment = this.state.moment.clone();
+    const { yearStr } = this.state;
 
     this.setState({
-      moment: _moment[dir === "prev" ? "subtract" : "add"](1, "year")
+      moment: _moment[dir === "prev" ? "subtract" : "add"](1, yearStr)
     });
   };
 
@@ -33,8 +58,9 @@ class Month extends Component {
     if (isDisabled) return;
     const { onSelect } = this.props;
     const _moment = this.state.moment.clone();
+    const { monthStr } = this.state;
 
-    _moment.month(month);
+    _moment[monthStr](month);
 
     this.setState({
       moment: _moment
@@ -45,6 +71,7 @@ class Month extends Component {
   _renderMonth = (row, month, idx) => {
     const now = moment();
     const _moment = this.state.moment;
+    const { monthStr } = this.state;
     const {
       maxDate,
       minDate,
@@ -54,37 +81,37 @@ class Month extends Component {
       rangeAt,
       dateLimit
     } = this.props;
-    const currentMonth = _moment.clone().month(month);
+    const currentMonth = _moment.clone()[monthStr](month);
     const start =
       selected && range
         ? selected.start
-          ? currentMonth.isSame(selected.start, "month")
+          ? currentMonth.isSame(selected.start, monthStr)
           : false
         : false;
     const end =
       selected && range
         ? selected.end
-          ? currentMonth.isSame(selected.end, "month")
+          ? currentMonth.isSame(selected.end, monthStr)
           : false
         : false;
     const between =
       selected && range
         ? selected.start && selected.end
-          ? currentMonth.isBetween(selected.start, selected.end, "month")
+          ? currentMonth.isBetween(selected.start, selected.end, monthStr)
           : false
         : false;
     const isSelected = selected
       ? range
         ? selected[rangeAt]
-          ? currentMonth.isSame(selected[rangeAt], "month")
+          ? currentMonth.isSame(selected[rangeAt], monthStr)
           : false
         : currentMonth.isSame(selected, "day")
       : false;
     const disabledMax = maxDate
-      ? currentMonth.isAfter(maxDate, "month")
+      ? currentMonth.isAfter(maxDate, monthStr)
       : false;
     const disabledMin = minDate
-      ? currentMonth.isBefore(minDate, "month")
+      ? currentMonth.isBefore(minDate, monthStr)
       : false;
     let disabled = false;
     let limited = false;
@@ -128,7 +155,7 @@ class Month extends Component {
     const isDisabled = disabledMax || disabledMin || disabled || limited;
     const className = classNames({
       [classes["selected"]]: isSelected,
-      [classes["now"]]: now.isSame(currentMonth, "month"),
+      [classes["now"]]: now.isSame(currentMonth, monthStr),
       [classes["disabled"]]: isDisabled,
       [classes["start"]]: start,
       [classes["end"]]: end,
@@ -148,7 +175,7 @@ class Month extends Component {
 
   render() {
     const _moment = this.state.moment;
-    const months = MONTHS;
+    const { months, isSolar } = this.state;
     const { changePanel, style } = this.props;
 
     return (
@@ -165,7 +192,7 @@ class Month extends Component {
             className={classes["current-date"]}
             onClick={changePanel.bind(this, "year", _moment)}
           >
-            {_moment.format("YYYY")}
+            {_moment.format(isSolar ? "jYYYY" : "YYYY")}
           </span>
           <button
             type="button"

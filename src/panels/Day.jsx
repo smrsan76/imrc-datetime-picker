@@ -5,27 +5,45 @@ import classNames from "classnames/bind";
 import { WEEKS, DAY_FORMAT } from "../constants";
 import { range as arrayRange, chunk } from "../utils";
 
+import {
+  WEEKS,
+  WEEKS_FA,
+  WEEKS_SOLAR,
+  WEEKS_SOLAR_FA,
+  DAY_FORMAT,
+  DAY_FORMAT_SOLAR
+} from "../constants";
+
 import classes from "../sass";
 
 class Day extends Component {
   constructor(props) {
     super(props);
+    const { isSolar } = props;
+
     this.state = {
-      moment: props.moment
+      moment: props.moment,
+      dateStr: isSolar ? "jDate" : "date",
+      monthStr: isSolar ? "jMonth" : "month"
     };
   }
 
   componentWillReceiveProps(props) {
+    const { isSolar } = props;
+
     this.setState({
-      moment: props.moment
+      moment: props.moment,
+      dateStr: isSolar ? "jDate" : "date",
+      monthStr: isSolar ? "jMonth" : "month"
     });
   }
 
   changeMonth = dir => {
     const _moment = this.state.moment.clone();
+    const { monthStr } = this.state;
 
     this.setState({
-      moment: _moment[dir === "prev" ? "subtract" : "add"](1, "month")
+      moment: _moment[dir === "prev" ? "subtract" : "add"](1, monthStr)
     });
   };
 
@@ -33,11 +51,12 @@ class Day extends Component {
     if (isDisabled) return;
     const { range, onSelect } = this.props;
     const _moment = this.state.moment.clone();
+    const { monthStr, dateStr } = this.state;
 
-    if (isPrevMonth) _moment.subtract(1, "month");
-    if (isNextMonth) _moment.add(1, "month");
+    if (isPrevMonth) _moment.subtract(1, monthStr);
+    if (isNextMonth) _moment.add(1, monthStr);
 
-    _moment.date(day);
+    _moment[dateStr](day);
 
     this.setState({
       moment: range ? this.state.moment : _moment
@@ -56,18 +75,20 @@ class Day extends Component {
       range,
       rangeAt,
       selected,
-      dateLimit
+      dateLimit,
+      lang
     } = this.props;
     const now = moment();
     const _moment = this.state.moment;
+    const { monthStr, dateStr } = this.state;
     const isPrevMonth = week === 0 && day > 7;
     const isNextMonth = week >= 4 && day <= 14;
     const month = isNextMonth
-      ? _moment.clone().add(1, "month")
+      ? _moment.clone().add(1, monthStr)
       : isPrevMonth
-        ? _moment.clone().subtract(1, "month")
+        ? _moment.clone().subtract(1, monthStr)
         : _moment.clone();
-    const currentDay = month.clone().date(day);
+    const currentDay = month.clone()[dateStr](day);
     const start =
       selected && range
         ? selected.start
@@ -156,32 +177,41 @@ class Day extends Component {
           isNextMonth
         )}
       >
-        {day}
+        {lang == "fa" ? convertNumToPersiann(day) : day}
       </td>
     );
   };
 
   render() {
     const {
-      weeks = WEEKS,
-      dayFormat = DAY_FORMAT,
+      isSolar,
+      lang,
+      weeks = isSolar
+        ? lang == "fa"
+          ? WEEKS_SOLAR_FA
+          : WEEKS_SOLAR
+        : lang == "fa"
+          ? WEEKS_FA
+          : WEEKS,
+      dayFormat = isSolar ? DAY_FORMAT_SOLAR : DAY_FORMAT,
       style,
       changePanel
     } = this.props;
     const _moment = this.state.moment;
+    const { monthStr, dateStr } = this.state;
     const firstDay = _moment
       .clone()
-      .date(1)
+      [dateStr](1)
       .day();
     const endOfThisMonth = _moment
       .clone()
-      .endOf("month")
-      .date();
+      .endOf(monthStr)
+      [dateStr]();
     const endOfLastMonth = _moment
       .clone()
-      .subtract(1, "month")
-      .endOf("month")
-      .date();
+      .subtract(1, monthStr)
+      .endOf(monthStr)
+      [dateStr]();
     const days = [].concat(
       arrayRange(endOfLastMonth - firstDay + 1, endOfLastMonth + 1),
       arrayRange(1, endOfThisMonth + 1),

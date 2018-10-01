@@ -60,10 +60,18 @@ class Range extends Component {
       shortcuts,
       confirmButtonText = CONFIRM_BUTTON_TEXT,
       startDateText = START_DATE_TEXT,
-      endDateText = END_DATE_TEXT
+      endDateText = END_DATE_TEXT,
+      isSolar
     } = this.props;
     const formatStyle =
-      format || (showTimePicker ? "YYYY/MM/DD HH:mm" : "YYYY/MM/DD");
+      format ||
+      (showTimePicker
+        ? isSolar
+          ? "jYYYY/jMM/jDD HH:mm"
+          : "YYYY/MM/DD HH:mm"
+        : isSolar
+          ? "jYYYY/jMM/jDD"
+          : "YYYY/MM/DD");
     const className = classNames(
       classes["datetime-range-picker"],
       this.props.className

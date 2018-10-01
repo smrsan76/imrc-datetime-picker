@@ -99,7 +99,9 @@ class Calendar extends Component {
       minDate,
       dateLimit,
       range,
-      rangeAt
+      rangeAt,
+      lang,
+      isSolar
     } = this.props;
     const props = {
       moment: this.state.moment,
@@ -113,7 +115,9 @@ class Calendar extends Component {
       minDate,
       dateLimit,
       range,
-      rangeAt
+      rangeAt,
+      lang,
+      isSolar
     };
     const { panel } = this.state;
     const isDayPanel = panel === "day";

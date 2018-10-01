@@ -2,37 +2,45 @@ import React, { Component } from "react";
 const moment = require("moment-jalaali");
 import classNames from "classnames/bind";
 
-import { chunk, range } from "../utils";
+import { chunk, range, convertNumToPersian } from "../utils";
 
 import classes from "../sass";
 
 class Year extends Component {
   constructor(props) {
     super(props);
+    const { isSolar } = props;
+
     this.state = {
-      moment: props.moment
+      moment: props.moment,
+      yearStr: isSolar ? "jYear" : "year"
     };
   }
 
   componentWillReceiveProps(props) {
+    const { isSolar } = props;
+
     this.setState({
-      moment: props.moment
+      moment: props.moment,
+      yearStr: isSolar ? "jYear" : "year"
     });
   }
 
   changePeriod = dir => {
     const _moment = this.state.moment.clone();
+    const { yearStr } = this.state;
 
     this.setState({
-      moment: _moment[dir === "prev" ? "subtract" : "add"](10, "year")
+      moment: _moment[dir === "prev" ? "subtract" : "add"](10, yearStr)
     });
   };
 
   select = (year, isDisabled) => {
     if (isDisabled) return;
     const _moment = this.state.moment.clone();
+    const { yearStr } = this.state;
 
-    _moment.year(year);
+    _moment[yearStr](year);
 
     this.setState({
       moment: _moment,
@@ -44,43 +52,45 @@ class Year extends Component {
   _renderYear = year => {
     const now = moment();
     const _moment = this.state.moment;
-    const firstYear = Math.floor(_moment.year() / 10) * 10;
+    const { yearStr } = this.state;
+    const firstYear = Math.floor(_moment[yearStr]() / 10) * 10;
     const {
       maxDate,
       minDate,
       selected,
       range,
       rangeAt,
-      dateLimit
+      dateLimit,
+      lang
     } = this.props;
-    const currentYear = _moment.clone().year(year);
+    const currentYear = _moment.clone()[yearStr](year);
     const start =
       selected && range
         ? selected.start
-          ? currentYear.isSame(selected.start, "year")
+          ? currentYear.isSame(selected.start, yearStr)
           : false
         : false;
     const end =
       selected && range
         ? selected.end
-          ? currentYear.isSame(selected.end, "year")
+          ? currentYear.isSame(selected.end, yearStr)
           : false
         : false;
     const between =
       selected && range
         ? selected.start && selected.end
-          ? currentYear.isBetween(selected.start, selected.end, "year")
+          ? currentYear.isBetween(selected.start, selected.end, yearStr)
           : false
         : false;
     const isSelected = selected
       ? range
         ? selected[rangeAt]
-          ? selected[rangeAt].year() === year
+          ? selected[rangeAt][yearStr]() === year
           : false
-        : selected.year() === year
+        : selected[yearStr]() === year
       : false;
-    const disabledMax = maxDate ? year > maxDate.year() : false;
-    const disabledMin = minDate ? year < minDate.year() : false;
+    const disabledMax = maxDate ? year > maxDate[yearStr]() : false;
+    const disabledMin = minDate ? year < minDate[yearStr]() : false;
     let disabled = false;
     let limited = false;
 
@@ -123,7 +133,7 @@ class Year extends Component {
     const isDisabled = disabledMax || disabledMin || disabled || limited;
     const className = classNames({
       [classes["selected"]]: isSelected,
-      [classes["now"]]: now.year() === year,
+      [classes["now"]]: now[yearStr]() === year,
       [classes["prev"]]: firstYear - 1 === year,
       [classes["next"]]: firstYear + 10 === year,
       [classes["disabled"]]: isDisabled,
@@ -138,15 +148,16 @@ class Year extends Component {
         className={className}
         onClick={this.select.bind(this, year, isDisabled)}
       >
-        {year}
+        {lang == "fa" ? convertNumToPersian(year) : year}
       </td>
     );
   };
 
   render() {
     const _moment = this.state.moment;
-    const { style } = this.props;
-    const firstYear = Math.floor(_moment.year() / 10) * 10;
+    const { yearStr } = this.state;
+    const { style, lang } = this.props;
+    const firstYear = Math.floor(_moment[yearStr]() / 10) * 10;
     const years = range(firstYear - 1, firstYear + 11);
 
     return (
@@ -160,7 +171,11 @@ class Year extends Component {
             <i className={`${classes["icon"]} ${classes["icon-angle-left"]}`} />
           </button>
           <span className={`${classes["current-date"]} ${classes["disabled"]}`}>
-            {firstYear} - {firstYear + 9}
+            {lang == "fa"
+              ? `${convertNumToPersiann(firstYear)} - ${convertNumToPersiann(
+                  firstYear + 9
+                )}`
+              : `${firstYear} - ${firstYear + 9}`}
           </span>
           <button
             type="button"
