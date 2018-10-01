@@ -1,3 +1,14 @@
+import { PERSIAN_NUMBERS } from "./constants";
+
+export const convertNumToPersian = num => {
+  num = num.toString();
+  let persianNum = "";
+  for (let i = 0; i < num.length; i++) {
+    persianNum += PERSIAN_NUMBERS[num[i]];
+  }
+  return persianNum;
+};
+
 export const range = (start, end) => {
   let length = Math.max(end - start, 0);
   const result = [];
