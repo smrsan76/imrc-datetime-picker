@@ -1,6 +1,6 @@
 # imrc-datetime-picker
 
-## v2.0.0.0-alpha
+## v2.0.0-alpha.0
 
 - (**Breaking**) [Moment-jalaali](https://npmjs.com/package/moment-jalaali) used instead of [Moment](https://npmjs.com/package/moment).
 - (**Breaking**) Solar calendar added.
