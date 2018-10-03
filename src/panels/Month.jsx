@@ -175,8 +175,8 @@ class Month extends Component {
 
   render() {
     const _moment = this.state.moment;
-    const { months, isSolar } = this.state;
-    const { changePanel, style } = this.props;
+    const { months } = this.state;
+    const { changePanel, style, isSolar } = this.props;
 
     return (
       <div className={classes["calendar-months"]} style={style}>
