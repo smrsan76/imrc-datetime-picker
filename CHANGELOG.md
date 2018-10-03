@@ -1,5 +1,11 @@
 # imrc-datetime-picker
 
+## v2.0.0.0-alpha
+
+- (**Breaking**) [Moment-jalaali](https://npmjs.com/package/moment-jalaali) used instead of [Moment](https://npmjs.com/package/moment).
+- (**Breaking**) Solar calendar added.
+- (**Breaking**) Persian/farsi language added.
+
 ## v1.3.2
 
 - The style of bottom arrow for top popup :: Changed
