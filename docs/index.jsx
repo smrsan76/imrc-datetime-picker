@@ -1,32 +1,36 @@
 import "babel-polyfill";
 import React, { Component } from "react";
 import { render } from "react-dom";
-const moment = require("moment");
-
-import "../dist/imrc-datetime-picker.min.css";
+const moment = require("moment-jalaali");
+moment.loadPersian({
+  dialect: "persian-modern",
+  usePersianDigits: true
+});
 
 // Production Test/Use
-const DatetimePicker = RCLOADABLE(
-  () => import("../dist/imrc-datetime-picker.min.js"),
-  {
-    render: (loaded, props) => {
-      const { DatetimePicker } = loaded;
-      return <DatetimePicker {...props} />;
-    }
-  }
-);
-const DatetimePickerTrigger = RCLOADABLE(
-  () => import("../dist/imrc-datetime-picker.min.js"),
-  {
-    render: (loaded, props) => {
-      const { DatetimePickerTrigger } = loaded;
-      return <DatetimePickerTrigger {...props} />;
-    }
-  }
-);
+// import "../dist/imrc-datetime-picker.min.css";
+// const DatetimePicker = RCLOADABLE(
+//   () => import("../dist/imrc-datetime-picker.min.js"),
+//   {
+//     render: (loaded, props) => {
+//       const { DatetimePicker } = loaded;
+//       return <DatetimePicker {...props} />;
+//     }
+//   }
+// );
+// const DatetimePickerTrigger = RCLOADABLE(
+//   () => import("../dist/imrc-datetime-picker.min.js"),
+//   {
+//     render: (loaded, props) => {
+//       const { DatetimePickerTrigger } = loaded;
+//       return <DatetimePickerTrigger {...props} />;
+//     }
+//   }
+// );
 
 // Development Test (HMR)
-// import { DatetimePicker, DatetimePickerTrigger } from "../src";
+import "../src/sass";
+import { DatetimePicker, DatetimePickerTrigger } from "../src";
 
 import "./index.scss";
 import classes from "./index.scss";
@@ -55,6 +59,8 @@ class InlinePicker extends Component {
           moment={moment}
           onChange={this.handleChange}
           showTimePicker={false}
+          isSolar={true}
+          lang="fa"
         />
       </div>
     );
@@ -92,6 +98,8 @@ class PopupPickerBottom extends Component {
           onChange={this.handleChange}
           appendToBoddy={true}
           showTimePicker={false}
+          isSolar={true}
+          lang="fa"
           position="bottom"
         >
           <input type="text" value={value} readOnly />
@@ -137,6 +145,8 @@ class PopupPickerTop extends Component {
           onChange={this.handleChange}
           appendToBoddy={true}
           showTimePicker={false}
+          isSolar={true}
+          lang="fa"
           position="top"
         >
           <input type="text" value={value} readOnly />
