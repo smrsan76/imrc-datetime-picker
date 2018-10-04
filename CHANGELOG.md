@@ -2,19 +2,27 @@
 
 ## v2.0.0-alpha.0
 
+> Oct 4, 2018
+
 - (**Breaking**) [Moment-jalaali](https://npmjs.com/package/moment-jalaali) used instead of [Moment](https://npmjs.com/package/moment).
 - (**Breaking**) Solar calendar added.
 - (**Breaking**) Persian/farsi language added.
 
 ## v1.3.2
 
+> Sep 27, 2018
+
 - The style of bottom arrow for top popup :: Changed
 
 ## v1.3.1
 
+> Sep 19, 2018
+
 - Docs & README.md :: Updated
 
 ## v1.3.0
+
+> Sep 19, 2018
 
 - (**Breaking**) All class names of the package, are used in local mode
 - (**Breaking**) CSS importing is required
@@ -29,15 +37,21 @@
 
 ## v1.1.0
 
+> Sep 18, 2018
+
 - (**Breaking**) Full `font-awesome` dependency :: Changed to :: Local selected `font-awesome` Dependency
 - Safer peerDependencies
 - `file-loader` devDependency :: Installed/Used
 
 ## v1.0.2
 
+> Sep 18, 2018
+
 - `README` :: Fixed
 
 ## v1.0.1
+
+> Sep 17, 2018
 
 - `package.json -> homepage` :: Changed to :: [imrc-datetime-picker.js.org](https://imrc-datetime-picker.js.org)
 - `CONTRIBUTING.md` :: Changed
