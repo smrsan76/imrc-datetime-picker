@@ -127,15 +127,11 @@ class Calendar extends Component {
     return (
       <div style={style}>
         <div className={classes["calendar"]}>
-          <Day {...props} style={{ display: isDayPanel ? "block" : "none" }} />
-          <Month
-            {...props}
-            style={{ display: isMonthPanel ? "block" : "none" }}
-          />
-          <Year
-            {...props}
-            style={{ display: isYearPanel ? "block" : "none" }}
-          />
+          {(() => {
+            if (isDayPanel) return <Day {...props} />;
+            if (isMonthPanel) return <Month {...props} />;
+            if (isYearPanel) return <Year {...props} />;
+          })()}
         </div>
       </div>
     );
