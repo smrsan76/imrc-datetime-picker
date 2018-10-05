@@ -69,7 +69,7 @@ class App extends Component {
     // Make sure it's locale is set to english,
     // because you've used moment.loadPersian() function, before.
     const defaultMoment = moment();
-    moment.locale();
+    moment.locale("en");
     
     this.state = {
       moment: defaultMoment
