@@ -1,5 +1,13 @@
 # imrc-datetime-picker
 
+## v2.0.0
+
+> Oct 5, 2018
+
+- [All changes of alpha version](#v200-alpha0).
+- (**Breaking**) Month panel disabledMax/disabledMin bug (for solar mode) fixed. :bug: :gun:
+- Performance improvements in Calendar.jsx, because of using conditional rendering approach instead of display=block/none.
+
 ## v2.0.0-alpha.0
 
 > Oct 4, 2018
