@@ -8,7 +8,7 @@
     type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
   <!-- <script src="https://use.fontawesome.com/7fdb149223.js"></script> -->
-<link href="./1.css" rel="stylesheet"></head>
+<link href="./2.css" rel="stylesheet"></head>
 
 <body>
   <h1 class="title">(Improved) React Datetime Picker
@@ -35,40 +35,97 @@
     </ul>
     <div class="heading">Usage</div>
     <div class="caption">Inline Mode</div>
+    <p>
+      This example shows how to make multilingual date picker which can
+      also support both solar and gregorian modes. Just <b>pay attention</b> to the use of
+      '<a target="_blank" title="moment-jalaali package" href="https://npmjs.com/package/moment-jalaali">moment-jalaali</a>'
+      instead of '<a target="_blank" title="moment package" href="https://npmjs.com/package/moment">moment</a>'
+      package.
+      If you won't have multilingual and solar date support, you could
+      simply use 'moment' package. (like next examples)
+    </p>
     <div class="example-code">
       <pre><code class="language-jsx">import React, {Component} from 'react';
-import moment from 'moment';
+import ReactDOM from "react-dom";
+import moment from 'moment-jalaali'; // Notice here !
+
+moment.loadPersian({
+  dialect: "persian-modern",
+  usePersianDigits: true
+});
 
 import "imrc-datetime-picker/dist/imrc-datetime-picker.css";
 import {DatetimePicker} from 'imrc-datetime-picker';
 
 class App extends Component {
-  constructor() {
-    super();
+  state = {
+    isFa: false,
+    isSolar: false
+  };
+  
+  constructor(props) {
+    super(props);
+    
+    // Make sure it's locale is set to english,
+    // because you've used moment.loadPersian() function, before.
+    const defaultMoment = moment();
+    moment.locale();
+    
     this.state = {
-      moment: moment()
+      moment: defaultMoment
     };
   }
 
-  handleChange = (moment) => {
+  handleChange = moment => this.setState({ moment });
+  
+  handleToggleSolar = () => {
     this.setState({
-      moment
+      isSolar: !this.state.isSolar
     });
-  }
+  };
+
+  handleLangChange = () => {
+    const { isFa } = this.state;
+    const newIsFa = !isFa;
+    this.state.moment.locale(newIsFa ? "fa" : "en");
+    this.setState({ isFa: newIsFa });
+  };
 
   render() {
+    const { moment, isSolar, isFa } = this.state;
+    const dateFormat = isSolar ? "jYYYY/jMM/jDD" : "YYYY/MM/DD";
+    
     return (
-      &lt;DatetimePicker
-        splitPanel={true}
-        moment={this.state.moment}
-        onChange={this.handleChange}
-        showTimePicker={false}
-      /&gt;
+      &lt;div&gt;
+        &lt;span className="text"&gt;Datetime: {moment.format(dateFormat)}&lt;/span&gt;
+        &lt;DatetimePicker
+          splitPanel={true}
+          moment={this.state.moment}
+          onChange={this.handleChange}
+          showTimePicker={false}
+          isSolar={isSolar}
+          lang={isFa ? "fa" : "en"}
+        /&gt;
+        &lt;input
+          type="checkbox"
+          name="solar"
+          defaultChecked={isSolar}
+          onChange={this.handleToggleSolar}
+        /&gt;{" "}
+        Solar Date &lt;br /&gt;
+        &lt;input
+          type="checkbox"
+          name="fa-lang"
+          defaultChecked={isFa}
+          onChange={this.handleLangChange}
+        /&gt;{" "}
+        FA (language)
+      &lt;/div&gt;
     );
   }
 }
 
-render(
+ReactDOM.render(
   &lt;App /&gt;,
   document.getElementById('app')
 );</code></pre>
@@ -80,7 +137,8 @@ render(
     <div class="caption">Popup Mode</div>
     <div class="example-code">
       <pre><code class="language-jsx">import React, {Component} from 'react';
-import moment from 'moment';
+import ReactDOM from "react-dom";
+import moment from 'moment'; // We don't need 'moment-jalaali' package here
 
 import "imrc-datetime-picker/dist/imrc-datetime-picker.css";
 import {DatetimePickerTrigger} from 'imrc-datetime-picker';
@@ -118,7 +176,7 @@ class App extends Component {
   }
 }
 
-render(
+ReactDOM.render(
   &lt;App /&gt;,
   document.getElementById('app')
 );</code></pre>
@@ -149,6 +207,6 @@ render(
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
-<script type="text/javascript" src="./index.js"></script><script type="text/javascript" src="./196aa78cc80a57bf7790.js"></script></body>
+<script type="text/javascript" src="./index.js"></script><script type="text/javascript" src="./38a054f70be04ab17d98.js"></script></body>
 
 </html>
