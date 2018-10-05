@@ -79,7 +79,8 @@ class Month extends Component {
       selected,
       range,
       rangeAt,
-      dateLimit
+      dateLimit,
+      isSolar
     } = this.props;
     const currentMonth = _moment.clone()[monthStr](month);
     const start =
@@ -107,12 +108,27 @@ class Month extends Component {
           : false
         : currentMonth.isSame(selected, "day")
       : false;
-    const disabledMax = maxDate
-      ? currentMonth.isAfter(maxDate, monthStr)
-      : false;
-    const disabledMin = minDate
-      ? currentMonth.isBefore(minDate, monthStr)
-      : false;
+
+    let disabledMax1 = false;
+    let disabledMin1 = false;
+    // for testing in solar mode
+    let disabledMax2 = false;
+    let disabledMin2 = false;
+
+    if (isSolar) {
+      // Solar test
+      currentMonth.jDate(1);
+      disabledMax1 = maxDate ? currentMonth.isAfter(maxDate, monthStr) : false;
+      disabledMin1 = minDate ? currentMonth.isBefore(minDate, monthStr) : false;
+      currentMonth.jDate(30);
+      disabledMax2 = maxDate ? currentMonth.isAfter(maxDate, monthStr) : false;
+      disabledMin2 = minDate ? currentMonth.isBefore(minDate, monthStr) : false;
+    } else {
+      // Gregorian test
+      disabledMax1 = maxDate ? currentMonth.isAfter(maxDate, monthStr) : false;
+      disabledMin1 = minDate ? currentMonth.isBefore(minDate, monthStr) : false;
+    }
+
     let disabled = false;
     let limited = false;
 
@@ -152,7 +168,13 @@ class Month extends Component {
       }
     }
 
-    const isDisabled = disabledMax || disabledMin || disabled || limited;
+    let isDisabled =
+      (isSolar
+        ? (disabledMax1 && disabledMax2) || (disabledMin1 && disabledMin2)
+        : disabledMax1 || disabledMin1) ||
+      disabled ||
+      limited;
+
     const className = classNames({
       [classes["selected"]]: isSelected,
       [classes["now"]]: now.isSame(currentMonth, monthStr),
