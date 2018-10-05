@@ -1,5 +1,12 @@
 # imrc-datetime-picker
 
+## v2.0.1
+
+> Oct 5, 2018
+
+- README.md updated.
+- TODO.md updated.
+
 ## v2.0.0
 
 > Oct 5, 2018
