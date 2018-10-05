@@ -8,70 +8,103 @@ moment.loadPersian({
 });
 
 // Production Test/Use
-// import "../dist/imrc-datetime-picker.min.css";
-// const DatetimePicker = RCLOADABLE(
-//   () => import("../dist/imrc-datetime-picker.min.js"),
-//   {
-//     render: (loaded, props) => {
-//       const { DatetimePicker } = loaded;
-//       return <DatetimePicker {...props} />;
-//     }
-//   }
-// );
-// const DatetimePickerTrigger = RCLOADABLE(
-//   () => import("../dist/imrc-datetime-picker.min.js"),
-//   {
-//     render: (loaded, props) => {
-//       const { DatetimePickerTrigger } = loaded;
-//       return <DatetimePickerTrigger {...props} />;
-//     }
-//   }
-// );
+import "../dist/imrc-datetime-picker.min.css";
+const DatetimePicker = RCLOADABLE(
+  () => import("../dist/imrc-datetime-picker.min.js"),
+  {
+    render: (loaded, props) => {
+      const { DatetimePicker } = loaded;
+      return <DatetimePicker {...props} />;
+    }
+  }
+);
+const DatetimePickerTrigger = RCLOADABLE(
+  () => import("../dist/imrc-datetime-picker.min.js"),
+  {
+    render: (loaded, props) => {
+      const { DatetimePickerTrigger } = loaded;
+      return <DatetimePickerTrigger {...props} />;
+    }
+  }
+);
 
 // Development Test (HMR)
-import "../src/sass";
-import { DatetimePicker, DatetimePickerTrigger } from "../src";
+// import "../src/sass";
+// import { DatetimePicker, DatetimePickerTrigger } from "../src";
 
 import "./index.scss";
 import classes from "./index.scss";
 
 class InlinePicker extends Component {
-  constructor() {
-    super();
+  state = {
+    isFa: false,
+    isSolar: false
+  };
+
+  constructor(props) {
+    super(props);
+    let defaultMoment = moment();
+    defaultMoment.locale("en");
     this.state = {
-      moment: moment()
+      moment: defaultMoment
     };
   }
 
-  handleChange = moment => {
+  handleChange = moment => this.setState({ moment });
+
+  handleToggleSolar = () => {
     this.setState({
-      moment
+      isSolar: !this.state.isSolar
     });
   };
 
+  handleLangChange = () => {
+    const { isFa } = this.state;
+    const newIsFa = !isFa;
+    this.state.moment.locale(newIsFa ? "fa" : "en");
+    this.setState({ isFa: newIsFa });
+  };
+
   render() {
-    const { moment } = this.state;
+    const { moment, isSolar, isFa } = this.state;
+    const dateFormat = isSolar ? "jYYYY/jMM/jDD" : "YYYY/MM/DD";
 
     return (
       <div>
-        <span className="text">Datetime: {moment.format("YYYY/MM/DD")}</span>
+        <span className="text">Datetime: {moment.format(dateFormat)}</span>
         <DatetimePicker
           moment={moment}
           onChange={this.handleChange}
           showTimePicker={false}
-          isSolar={true}
-          lang="fa"
+          isSolar={isSolar}
+          lang={isFa ? "fa" : "en"}
         />
+        <input
+          type="checkbox"
+          name="solar"
+          defaultChecked={isSolar}
+          onChange={this.handleToggleSolar}
+        />{" "}
+        Solar Date <br />
+        <input
+          type="checkbox"
+          name="fa-lang"
+          defaultChecked={isFa}
+          onChange={this.handleLangChange}
+        />{" "}
+        FA (language)
       </div>
     );
   }
 }
 
 class PopupPickerBottom extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    let defaultDatetime = moment();
+    defaultDatetime.locale("en");
     this.state = {
-      datetime: moment()
+      datetime: defaultDatetime
     };
   }
 
@@ -82,9 +115,11 @@ class PopupPickerBottom extends Component {
   };
 
   render() {
+    const newMoment = moment();
+    moment.locale("en");
     const shortcuts = {
-      Today: moment(),
-      Yesterday: moment().subtract(1, "days"),
+      Today: newMoment,
+      Yesterday: newMoment.subtract(1, "days"),
       Clear: ""
     };
     const { datetime } = this.state;
@@ -98,8 +133,6 @@ class PopupPickerBottom extends Component {
           onChange={this.handleChange}
           appendToBoddy={true}
           showTimePicker={false}
-          isSolar={true}
-          lang="fa"
           position="bottom"
         >
           <input type="text" value={value} readOnly />
@@ -115,10 +148,12 @@ class PopupPickerBottom extends Component {
 }
 
 class PopupPickerTop extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    let defaultDatetime = moment();
+    defaultDatetime.locale("en");
     this.state = {
-      datetime: moment()
+      datetime: defaultDatetime
     };
   }
 
@@ -145,8 +180,6 @@ class PopupPickerTop extends Component {
           onChange={this.handleChange}
           appendToBoddy={true}
           showTimePicker={false}
-          isSolar={true}
-          lang="fa"
           position="top"
         >
           <input type="text" value={value} readOnly />
