@@ -2,6 +2,7 @@
 
 :local(.datetime-picker) * {
   box-sizing: border-box;
+  direction: ltr !important;
 }
 
 :local(.datetime-picker) {
