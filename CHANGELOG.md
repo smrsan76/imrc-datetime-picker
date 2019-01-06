@@ -1,5 +1,12 @@
 # imrc-datetime-picker
 
+## v2.0.2
+
+> Jan 6, 2019
+
+- Fixed direction issue in RTL bodies.
+- Updated webpack-dev-server because of it's vulnerability.
+
 ## v2.0.1
 
 > Oct 5, 2018
