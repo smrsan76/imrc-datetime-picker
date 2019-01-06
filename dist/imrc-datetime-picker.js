@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("moment-jalaali"), require("react-dom"));
+		module.exports = factory(require("moment-jalaali"), require("react"), require("react-dom"));
 	else if(typeof define === 'function' && define.amd)
-		define("imrc-datetime-picker", ["react", "moment-jalaali", "react-dom"], factory);
+		define("imrc-datetime-picker", ["moment-jalaali", "react", "react-dom"], factory);
 	else if(typeof exports === 'object')
-		exports["imrc-datetime-picker"] = factory(require("react"), require("moment-jalaali"), require("react-dom"));
+		exports["imrc-datetime-picker"] = factory(require("moment-jalaali"), require("react"), require("react-dom"));
 	else
-		root["imrc-datetime-picker"] = factory(root["react"], root["moment-jalaali"], root["react-dom"]);
-})(window, function(__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_moment_jalaali__, __WEBPACK_EXTERNAL_MODULE_react_dom__) {
+		root["imrc-datetime-picker"] = factory(root["moment-jalaali"], root["react"], root["react-dom"]);
+})(window, function(__WEBPACK_EXTERNAL_MODULE_moment_jalaali__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_react_dom__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
