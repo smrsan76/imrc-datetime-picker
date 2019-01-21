@@ -3,7 +3,12 @@ const moment = require("moment-jalaali");
 import classNames from "classnames/bind";
 
 import { WEEKS, WEEKS_FA, DAY_FORMAT, DAY_FORMAT_SOLAR } from "../constants";
-import { range as arrayRange, chunk, convertNumToPersian } from "../utils";
+import {
+  range as arrayRange,
+  chunk,
+  convertNumToPersian,
+  enWeekToFaWeek
+} from "../utils";
 
 import classes from "../sass";
 
@@ -77,8 +82,8 @@ class Day extends Component {
     const month = isNextMonth
       ? _moment.clone().add(1, monthStr)
       : isPrevMonth
-        ? _moment.clone().subtract(1, monthStr)
-        : _moment.clone();
+      ? _moment.clone().subtract(1, monthStr)
+      : _moment.clone();
     const currentDay = month.clone()[dateStr](day);
     const start =
       selected && range
@@ -184,10 +189,11 @@ class Day extends Component {
     } = this.props;
     const _moment = this.state.moment;
     const { monthStr, dateStr } = this.state;
-    const firstDay = _moment
+    let firstDay = _moment
       .clone()
       [dateStr](1)
       .day();
+    if (lang == "fa") firstDay = enWeekToFaWeek(firstDay);
     const endOfThisMonth = _moment
       .clone()
       .endOf(monthStr)
