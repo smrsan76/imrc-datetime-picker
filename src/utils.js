@@ -3,10 +3,14 @@ import { PERSIAN_NUMBERS } from "./constants";
 export const convertNumToPersian = num => {
   num = num.toString();
   let persianNum = "";
-  for (let i = 0; i < num.length; i++) {
-    persianNum += PERSIAN_NUMBERS[num[i]];
+  for (const ch of num) {
+    persianNum += PERSIAN_NUMBERS[ch];
   }
   return persianNum;
+};
+
+export const enWeekToFaWeek = dayOfWeek => {
+  return dayOfWeek == 6 ? 0 : dayOfWeek + 1;
 };
 
 export const range = (start, end) => {
