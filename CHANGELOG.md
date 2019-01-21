@@ -1,10 +1,16 @@
 # imrc-datetime-picker
 
+## v2.1.0
+
+> Jan 22, 2019
+
+- (**Breaking**) Fixed wrong name of days of the week in FA calendar.
+
 ## v2.0.2
 
 > Jan 6, 2019
 
-- Fixed direction issue in RTL bodies.
+- (**Breaking**) Fixed direction issue in RTL bodies.
 - Updated webpack-dev-server because of it's vulnerability.
 
 ## v2.0.1
