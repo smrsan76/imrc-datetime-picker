@@ -119,7 +119,7 @@ class PopupPickerBottom extends Component {
     moment.locale("en");
     const shortcuts = {
       Today: newMoment,
-      Yesterday: newMoment.subtract(1, "days"),
+      Yesterday: newMoment.clone().subtract(1, "days"),
       Clear: ""
     };
     const { datetime } = this.state;
