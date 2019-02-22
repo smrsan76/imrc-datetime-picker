@@ -109,9 +109,12 @@ See the [demo] page.
     </tr>
     <tr>
       <td>shortcuts</td>
-      <td>Object:{name: value}</td>
+      <td>Object:{name: moment} | Object:{name: { moment, callback }}</td>
       <td></td>
-      <td>Add shortcuts on the top `shortcuts-bar` for selecting a date.</td>
+      <td>
+        Add shortcuts on the top `shortcuts-bar` for selecting a date.
+        <b><i>It supports callback option in v2.1.1 and above.</i></b>
+      </td>
       <td></td>
     </tr>
     <tr>
