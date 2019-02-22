@@ -16,12 +16,14 @@ const isSameRange = (current, value) => {
 class Shortcuts extends Component {
   handleClick = (value, isCustom) => {
     const { onChange, range } = this.props;
+    const valueMoment = value.moment || value;
 
     if (range) {
-      onChange && onChange(value, isCustom);
+      onChange && onChange(valueMoment, isCustom);
     } else {
-      onChange && onChange(value, "day");
+      onChange && onChange(valueMoment, "day");
     }
+    if (value.callback) value.callback();
   };
 
   _renderShortcut = (key, value) => {
@@ -32,11 +34,11 @@ class Shortcuts extends Component {
     } = this.props;
     const current = this.props.moment;
     const selected = range
-      ? key !== "custom" && isSameRange(current, value)
+      ? key !== "custom" && isSameRange(current, value.moment || value)
       : false;
     const isCustomSelected = range
       ? !Object.keys(shortcuts).some(_key =>
-          isSameRange(current, shortcuts[_key])
+          isSameRange(current, shortcuts[_key].moment || shortcuts[_key])
         ) && key === "custom"
       : false;
     const className = classNames(classes["btn"], {
