@@ -1,5 +1,23 @@
 # imrc-datetime-picker
 
+## v2.1.1
+
+> Feb 22, 2019
+
+- Now you can set a callback function on shortcut buttons, for example:
+
+```javascript
+const shortcuts = {
+  Today: moment(), // Pure moment object
+  Clear: /* moment + callback */ {
+    moment: currentMomentObj, // REQUIRED
+    callback: /* optional */ () => {
+      this.setState({ cleared: true });
+    }
+  }
+};
+```
+
 ## v2.1.0
 
 > Jan 22, 2019
