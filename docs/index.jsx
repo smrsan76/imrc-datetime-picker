@@ -99,97 +99,118 @@ class InlinePicker extends Component {
 }
 
 class PopupPickerBottom extends Component {
+  state = {
+    _moment: null,
+    cleared: false
+  };
+
   constructor(props) {
     super(props);
-    let defaultDatetime = moment();
-    defaultDatetime.locale("en");
-    this.state = {
-      datetime: defaultDatetime
-    };
+
+    const defaultMoment = moment();
+    defaultMoment.locale("en");
+
+    this.state._moment = defaultMoment;
   }
 
   handleChange = moment => {
     this.setState({
-      datetime: moment
+      _moment: moment,
+      cleared: false
     });
   };
 
   render() {
-    const newMoment = moment();
+    const { _moment, cleared } = this.state;
+
     moment.locale("en");
+    const newMoment = moment();
+
     const shortcuts = {
       Today: newMoment,
       Yesterday: newMoment.clone().subtract(1, "days"),
-      Clear: ""
+      Clear: {
+        moment: _moment,
+        callback: () => {
+          this.setState({ cleared: true });
+        }
+      }
     };
-    const { datetime } = this.state;
-    const value = datetime ? datetime.format("YYYY/MM/DD") : "";
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD") : "";
 
     return (
-      <React.Fragment>
-        <DatetimePickerTrigger
-          shortcuts={shortcuts}
-          moment={datetime}
-          onChange={this.handleChange}
-          appendToBoddy={true}
-          showTimePicker={false}
-          position="bottom"
-        >
-          <input type="text" value={value} readOnly />
-          <span
-            className={`input-icon ${classes["icon"]} ${
-              classes["icon-calendar-empty"]
-            }`}
-          />
-        </DatetimePickerTrigger>
-      </React.Fragment>
+      <DatetimePickerTrigger
+        shortcuts={shortcuts}
+        moment={_moment}
+        onChange={this.handleChange}
+        appendToBoddy={true}
+        showTimePicker={false}
+        position="bottom"
+      >
+        <input type="text" value={value} readOnly />
+        <span
+          className={`input-icon ${classes["icon"]} ${
+            classes["icon-calendar-empty"]
+          }`}
+        />
+      </DatetimePickerTrigger>
     );
   }
 }
 
 class PopupPickerTop extends Component {
+  state = {
+    _moment: null,
+    cleared: false
+  };
+
   constructor(props) {
     super(props);
-    let defaultDatetime = moment();
-    defaultDatetime.locale("en");
-    this.state = {
-      datetime: defaultDatetime
-    };
+
+    const defaultMoment = moment();
+    defaultMoment.locale("en");
+
+    this.state._moment = defaultMoment;
   }
 
   handleChange = moment => {
     this.setState({
-      datetime: moment
+      _moment: moment,
+      cleared: false
     });
   };
 
   render() {
+    const { _moment, cleared } = this.state;
+    const newMoment = moment();
     const shortcuts = {
-      Today: moment(),
-      Yesterday: moment().subtract(1, "days"),
-      Clear: ""
+      Today: newMoment,
+      Yesterday: newMoment.clone().subtract(1, "days"),
+      Clear: {
+        moment: _moment,
+        callback: () => {
+          this.setState({ cleared: true });
+        }
+      }
     };
-    const { datetime } = this.state;
-    const value = datetime ? datetime.format("YYYY/MM/DD") : "";
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD") : "";
 
     return (
-      <React.Fragment>
-        <DatetimePickerTrigger
-          shortcuts={shortcuts}
-          moment={datetime}
-          onChange={this.handleChange}
-          appendToBoddy={true}
-          showTimePicker={false}
-          position="top"
-        >
-          <input type="text" value={value} readOnly />
-          <span
-            className={`input-icon ${classes["icon"]} ${
-              classes["icon-calendar-empty"]
-            }`}
-          />
-        </DatetimePickerTrigger>
-      </React.Fragment>
+      <DatetimePickerTrigger
+        shortcuts={shortcuts}
+        moment={_moment}
+        onChange={this.handleChange}
+        appendToBoddy={true}
+        showTimePicker={false}
+        position="top"
+      >
+        <input type="text" value={value} readOnly />
+        <span
+          className={`input-icon ${classes["icon"]} ${
+            classes["icon-calendar-empty"]
+          }`}
+        />
+      </DatetimePickerTrigger>
     );
   }
 }

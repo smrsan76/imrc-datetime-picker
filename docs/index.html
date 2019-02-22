@@ -1,51 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>(Improved) React Datetime Picker</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500&amp;subset=latin,cyrillic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css"
+    />
+    <!-- <script src="https://use.fontawesome.com/7fdb149223.js"></script> -->
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>(Improved) React Datetime Picker</title>
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500&amp;subset=latin,cyrillic" rel="stylesheet"
-    type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
-  <!-- <script src="https://use.fontawesome.com/7fdb149223.js"></script> -->
-</head>
-
-<body>
-  <h1 class="title">(Improved) React Datetime Picker
-    <div class="buttons">
-      <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker" data-size="large"
-        data-count-href="/smrsan76/imrc-datetime-picker/stargazers" data-count-api="/repos/smrsan76/imrc-datetime-picker#stargazers_count"
-        data-count-aria-label="# stargazers on GitHub" aria-label="Star smrsan76/imrc-datetime-picker on GitHub">Star</a>
-      <a class="github-button" href="https://github.com/smrsan76/imrc-datetime-picker/fork" data-icon="octicon-repo-forked"
-        data-size="large" data-show-count="true" aria-label="Fork smrsan76/imrc-datetime-picker on GitHub">Fork</a>
-    </div>
-  </h1>
-  <div class="content">
-    <div class="heading">Installation</div>
-    <div class="caption">Install with NPM</div>
-    <a href="https://nodei.co/npm/imrc-datetime-picker/" title="NPM" style="display: block;text-align: center">
-      <img src="https://nodei.co/npm/imrc-datetime-picker.png" />
-    </a>
-    <div class="caption">Manual download</div>
-    <ul>
-      <li>dist/imrc-datetime-picker.js</li>
-      <li>dist/imrc-datetime-picker.min.js</li>
-      <li>dist/imrc-datetime-picker.css</li>
-      <li>dist/imrc-datetime-picker.min.css</li>
-    </ul>
-    <div class="heading">Usage</div>
-    <div class="caption">Inline Mode</div>
-    <p>
-      This example shows how to make multilingual date picker which can
-      also support both solar and gregorian modes. Just <b>pay attention</b> to the use of
-      '<a target="_blank" title="moment-jalaali package" href="https://npmjs.com/package/moment-jalaali">moment-jalaali</a>'
-      instead of '<a target="_blank" title="moment package" href="https://npmjs.com/package/moment">moment</a>'
-      package.
-      If you won't have multilingual and solar date support, you could
-      simply use 'moment' package. (like next examples)
-    </p>
-    <div class="example-code">
-      <pre><code class="language-jsx">import React, {Component} from 'react';
+  <body>
+    <h1 class="title">
+      (Improved) React Datetime Picker
+      <div class="buttons">
+        <a
+          class="github-button"
+          href="https://github.com/smrsan76/imrc-datetime-picker"
+          data-size="large"
+          data-count-href="/smrsan76/imrc-datetime-picker/stargazers"
+          data-count-api="/repos/smrsan76/imrc-datetime-picker#stargazers_count"
+          data-count-aria-label="# stargazers on GitHub"
+          aria-label="Star smrsan76/imrc-datetime-picker on GitHub"
+          >Star</a
+        >
+        <a
+          class="github-button"
+          href="https://github.com/smrsan76/imrc-datetime-picker/fork"
+          data-icon="octicon-repo-forked"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Fork smrsan76/imrc-datetime-picker on GitHub"
+          >Fork</a
+        >
+      </div>
+    </h1>
+    <div class="content">
+      <div class="heading">Installation</div>
+      <div class="caption">Install with NPM</div>
+      <a
+        href="https://nodei.co/npm/imrc-datetime-picker/"
+        title="NPM"
+        style="display: block;text-align: center"
+      >
+        <img src="https://nodei.co/npm/imrc-datetime-picker.png" />
+      </a>
+      <div class="caption">Manual download</div>
+      <ul>
+        <li>dist/imrc-datetime-picker.js</li>
+        <li>dist/imrc-datetime-picker.min.js</li>
+        <li>dist/imrc-datetime-picker.css</li>
+        <li>dist/imrc-datetime-picker.min.css</li>
+      </ul>
+      <div class="heading">Usage</div>
+      <div class="caption">Inline Mode</div>
+      <p>
+        This example shows how to make multilingual date picker which can also
+        support both solar and gregorian modes. Just <b>pay attention</b> to the
+        use of '<a
+          target="_blank"
+          title="moment-jalaali package"
+          href="https://npmjs.com/package/moment-jalaali"
+          >moment-jalaali</a
+        >' instead of '<a
+          target="_blank"
+          title="moment package"
+          href="https://npmjs.com/package/moment"
+          >moment</a
+        >' package. If you won't have multilingual and solar date support, you
+        could simply use 'moment' package. (like next examples)
+      </p>
+      <div class="example-code">
+        <pre><code class="language-jsx">import React, {Component} from 'react';
 import ReactDOM from "react-dom";
 import moment from 'moment-jalaali'; // Notice here !
 
@@ -129,14 +160,14 @@ ReactDOM.render(
   &lt;App /&gt;,
   document.getElementById('app')
 );</code></pre>
-      <div class="example">
-        <div id="inline-picker"></div>
+        <div class="example">
+          <div id="inline-picker"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="caption">Popup Mode</div>
-    <div class="example-code">
-      <pre><code class="language-jsx">import React, {Component} from 'react';
+      <div class="caption">Popup Mode</div>
+      <div class="example-code">
+        <pre><code class="language-jsx">import React, {Component} from 'react';
 import ReactDOM from "react-dom";
 import moment from 'moment'; // We don't need 'moment-jalaali' package here
 
@@ -144,25 +175,34 @@ import "imrc-datetime-picker/dist/imrc-datetime-picker.css";
 import {DatetimePickerTrigger} from 'imrc-datetime-picker';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      moment: moment()
-    };
-  }
+  state = {
+    _moment: moment(),
+    cleared: false
+  };
 
   handleChange = (moment) => {
     this.setState({
-      moment
+      _moment: moment,
+      cleared: false
     });
   }
 
   render() {
+    const { _moment, cleared } = this.state;
+    
+    const newMoment = moment();
+    
     const shortcuts = {
-      'Today': moment(),
-      'Yesterday': moment().subtract(1, 'days'),
-      'Clear': ''
+      'Today': newMoment,
+      'Yesterday': newMoment.clone().subtract(1, 'days'),
+      'Clear': {
+        moment: _moment,
+        callback: () => {
+          this.setState({ cleared: true });
+        }
+      }
     };
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD") : "";
     
     return (
       &lt;DatetimePickerTrigger
@@ -170,7 +210,7 @@ class App extends Component {
         moment={this.state.moment}
         onChange={this.handleChange}
         showTimePicker={false}&gt
-        &lt;input type="text" value={this.state.moment.format('YYYY-MM-DD')} readOnly /&gt;
+        &lt;input type="text" value={value} readOnly /&gt;
       &lt;/DatetimePickerTrigger&gt;
     );
   }
@@ -180,33 +220,31 @@ ReactDOM.render(
   &lt;App /&gt;,
   document.getElementById('app')
 );</code></pre>
-      <div class="example">
-        <div class="popup-picker" id="popup-picker-bottom"></div>
+        <div class="example">
+          <div class="popup-picker" id="popup-picker-bottom"></div>
+        </div>
       </div>
-    </div>
-    <p>
-      You can also popup the datetime picker to the top position.
-      Everything is similar to the codes above, but just
-      add a 'position' attribute with 'top' value to the
-      'DatetimePickerTrigger' component.
-    </p>
-    <div class="example-code">
-      <pre><code class="language-jsx">...
+      <p>
+        You can also popup the datetime picker to the top position. Everything
+        is similar to the codes above, but just add a 'position' attribute with
+        'top' value to the 'DatetimePickerTrigger' component.
+      </p>
+      <div class="example-code">
+        <pre><code class="language-jsx">...
 &lt;DatetimePickerTrigger
   ...
   position="top"&gt
   ...
 &lt;/DatetimePickerTrigger&gt;
 ...</code></pre>
-      <div class="example">
-        <div class="popup-picker" id="popup-picker-top"></div>
+        <div class="example">
+          <div class="popup-picker" id="popup-picker-top"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
-</body>
-
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>
+  </body>
 </html>
