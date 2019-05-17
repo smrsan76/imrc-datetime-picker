@@ -177,6 +177,15 @@ See the [demo] page.
       </td>
       <td>>=2.x</td>
     </tr>
+    <tr>
+      <td>portalClassName</td>
+      <td>String</td>
+      <td>undefined</td>
+      <td>
+        Picker class name when it's appended to body.
+      </td>
+      <td>>=2.x</td>
+    </tr>
   </tbody>
 </table>
 

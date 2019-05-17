@@ -83,6 +83,7 @@ class Trigger extends Component {
 
   _renderPortal = () => {
     const { pos, isOpen } = this.state;
+    const { portalClassName } = this.props;
     const style = {
       display: isOpen ? "block" : "none",
       position: "fixed",
@@ -90,7 +91,7 @@ class Trigger extends Component {
       left: `${pos.left}px`
     };
 
-    return <Portal style={style}>{this._renderPicker(true)}</Portal>;
+    return <Portal className={portalClassName} style={style}>{this._renderPicker(true)}</Portal>;
   };
 
   _renderPicker = isOpen => {

@@ -143,10 +143,11 @@ class PopupPickerBottom extends Component {
         shortcuts={shortcuts}
         moment={_moment}
         onChange={this.handleChange}
-        appendToBoddy={true}
+        appendToBody={true}
         showTimePicker={false}
         position="bottom"
-      >
+        portalClassName="portalClassName"
+        >
         <input type="text" value={value} readOnly />
         <span
           className={`input-icon ${classes["icon"]} ${
@@ -200,9 +201,10 @@ class PopupPickerTop extends Component {
         shortcuts={shortcuts}
         moment={_moment}
         onChange={this.handleChange}
-        appendToBoddy={true}
+        appendToBody={true}
         showTimePicker={false}
         position="top"
+        portalClassName="portalClassName"
       >
         <input type="text" value={value} readOnly />
         <span
