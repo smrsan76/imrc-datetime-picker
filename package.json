@@ -1,6 +1,6 @@
 {
   "name": "imrc-datetime-picker",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "(Improved) React component datetime picker by momentjs",
   "main": "dist/imrc-datetime-picker.js",
   "keywords": [
