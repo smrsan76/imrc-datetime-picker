@@ -1,5 +1,13 @@
 # imrc-datetime-picker
 
+## v2.1.2
+
+> Sep 05, 2019
+
+- Fixed some dependency issues
+- Deleted package-lock.json
+- Enabled the star counter on gh-page
+
 ## v2.1.1
 
 > Feb 22, 2019
