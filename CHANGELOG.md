@@ -1,5 +1,11 @@
 # imrc-datetime-picker
 
+## v2.1.3
+
+> Sep 29, 2019
+
+- [hilo2120](https://github.com/hilo2120) : Addedd `UNSAFE_` to componentWillReceiveProps to prevent console warning in react v16.8
+
 ## v2.1.2
 
 > Sep 05, 2019
