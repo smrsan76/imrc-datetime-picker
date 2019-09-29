@@ -16,7 +16,7 @@ class Calendar extends Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({
       moment: this.getCurrentMoment(props)
     });

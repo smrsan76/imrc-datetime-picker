@@ -24,7 +24,7 @@ class Day extends Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const { isSolar } = props;
 
     this.setState({
