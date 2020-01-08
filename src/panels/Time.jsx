@@ -36,12 +36,14 @@ class Time extends Component {
           result[rangeAt] ||
           moment()
             .hours(0)
-            .minutes(0);
+            .minutes(0)
+            .seconds(0);
       }
     } else {
       result = moment()
         .hours(0)
-        .minutes(0);
+        .minutes(0)
+        .seconds(0);
     }
 
     return result;
@@ -73,6 +75,7 @@ class Time extends Component {
     const { style } = this.props;
     const defaultHourValue = _moment.hour();
     const defaultMinuteValue = _moment.minute();
+    const defaultSecondValue = _moment.second();
 
     return (
       <div style={style}>
@@ -81,6 +84,8 @@ class Time extends Component {
             <span className={classes["text"]}>{_moment.format("HH")}</span>
             <span className={classes["separater"]}>:</span>
             <span className={classes["text"]}>{_moment.format("mm")}</span>
+            <span className={classes["separater"]}>:</span>
+            <span className={classes["text"]}>{_moment.format("ss")}</span>
           </div>
           <div className={classes["sliders"]}>
             <span className={classes["slider-text"]}>Hours:</span>
@@ -102,6 +107,18 @@ class Time extends Component {
               value={defaultMinuteValue}
               defaultValue={defaultMinuteValue}
               onChange={this.handleChange.bind(this, "minutes")}
+              className={classes["slider"]}
+              withBars
+            >
+              <div className={classes["handle"]} />
+            </ReactSlider>
+            <span className={classes["slider-text"]}>Seconds:</span>
+            <ReactSlider
+              min={0}
+              max={59}
+              value={defaultSecondValue}
+              defaultValue={defaultSecondValue}
+              onChange={this.handleChange.bind(this, "seconds")}
               className={classes["slider"]}
               withBars
             >

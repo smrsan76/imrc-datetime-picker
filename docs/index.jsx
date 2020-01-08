@@ -136,7 +136,7 @@ class PopupPickerBottom extends Component {
         }
       }
     };
-    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD") : "";
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD HH:mm:ss") : "";
 
     return (
       <DatetimePickerTrigger
@@ -144,7 +144,7 @@ class PopupPickerBottom extends Component {
         moment={_moment}
         onChange={this.handleChange}
         appendToBoddy={true}
-        showTimePicker={false}
+        showTimePicker={true}
         position="bottom"
       >
         <input type="text" value={value} readOnly />
@@ -193,7 +193,7 @@ class PopupPickerTop extends Component {
         }
       }
     };
-    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD") : "";
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD HH:mm:ss") : "";
 
     return (
       <DatetimePickerTrigger
@@ -201,7 +201,7 @@ class PopupPickerTop extends Component {
         moment={_moment}
         onChange={this.handleChange}
         appendToBoddy={true}
-        showTimePicker={false}
+        showTimePicker={true}
         position="top"
       >
         <input type="text" value={value} readOnly />
