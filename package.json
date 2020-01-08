@@ -27,7 +27,11 @@
     "url": "git+https://github.com/smrsan76/imrc-datetime-picker.git"
   },
   "author": "SMRSAN",
-  "contributors": ['alberss'],
+  "contributors": [{
+    "name": "Valudio",
+    "email": "development@valudio.com",
+    "url": "https://www.valudio.com/en"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/smrsan76/imrc-datetime-picker/issues"
