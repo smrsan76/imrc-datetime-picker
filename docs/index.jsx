@@ -76,6 +76,7 @@ class InlinePicker extends Component {
           moment={moment}
           onChange={this.handleChange}
           showTimePicker={false}
+          showSecondsPicker={false}
           isSolar={isSolar}
           lang={isFa ? "fa" : "en"}
         />
@@ -145,6 +146,7 @@ class PopupPickerBottom extends Component {
         onChange={this.handleChange}
         appendToBoddy={true}
         showTimePicker={false}
+        showSecondsPicker={false}
         position="bottom"
       >
         <input type="text" value={value} readOnly />
@@ -202,6 +204,65 @@ class PopupPickerTop extends Component {
         onChange={this.handleChange}
         appendToBoddy={true}
         showTimePicker={false}
+        showSecondsPicker={false}
+        position="top"
+      >
+        <input type="text" value={value} readOnly />
+        <span
+          className={`input-icon ${classes["icon"]} ${
+            classes["icon-calendar-empty"]
+          }`}
+        />
+      </DatetimePickerTrigger>
+    );
+  }
+}
+
+class PopupPickerSeconds extends Component {
+  state = {
+    _moment: null,
+    cleared: false
+  };
+
+  constructor(props) {
+    super(props);
+
+    const defaultMoment = moment();
+    defaultMoment.locale("en");
+
+    this.state._moment = defaultMoment;
+  }
+
+  handleChange = moment => {
+    this.setState({
+      _moment: moment,
+      cleared: false
+    });
+  };
+
+  render() {
+    const { _moment, cleared } = this.state;
+    const newMoment = moment();
+    const shortcuts = {
+      Today: newMoment,
+      Yesterday: newMoment.clone().subtract(1, "days"),
+      Clear: {
+        moment: _moment,
+        callback: () => {
+          this.setState({ cleared: true });
+        }
+      }
+    };
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD HH:mm:ss") : "";
+
+    return (
+      <DatetimePickerTrigger
+        shortcuts={shortcuts}
+        moment={_moment}
+        onChange={this.handleChange}
+        appendToBoddy={true}
+        showTimePicker={true}
+        showSecondsPicker={true}
         position="top"
       >
         <input type="text" value={value} readOnly />
@@ -216,6 +277,6 @@ class PopupPickerTop extends Component {
 }
 
 render(<InlinePicker />, document.getElementById("inline-picker"));
-
 render(<PopupPickerBottom />, document.getElementById("popup-picker-bottom"));
 render(<PopupPickerTop />, document.getElementById("popup-picker-top"));
+render(<PopupPickerSeconds />, document.getElementById("popup-picker-seconds"));

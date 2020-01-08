@@ -28,6 +28,7 @@ class Picker extends Component {
       shortcuts,
       splitPanel,
       showTimePicker = true,
+      showSecondsPicker = true,
       showCalendarPicker = true
     } = this.props;
     const { panel } = this.state;
@@ -93,6 +94,7 @@ class Picker extends Component {
           <Time
             {...props}
             style={{ display: isTimePanel || !splitPanel ? "block" : "none" }}
+            showSecondsPicker={ showSecondsPicker }
           />
         ) : (
           undefined

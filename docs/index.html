@@ -203,14 +203,15 @@ class App extends Component {
         }
       }
     };
-    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD") : "";
+    const value = !cleared && _moment ? _moment.format("YYYY/MM/DD HH:mm:ss") : "";
     
     return (
       &lt;DatetimePickerTrigger
         shortcuts={shortcuts} 
         moment={this.state.moment}
         onChange={this.handleChange}
-        showTimePicker={false}&gt
+        showTimePicker={true}
+        showSecondsPicker={true}&gt
         &lt;input type="text" value={value} readOnly /&gt;
       &lt;/DatetimePickerTrigger&gt;
     );
@@ -242,8 +243,24 @@ ReactDOM.render(
           <div class="popup-picker" id="popup-picker-top"></div>
         </div>
       </div>
-    </div>
 
+      <div class="caption">Time Picker mode</div>
+      <div class="example-code">
+        <pre><code class="language-jsx">...
+&lt;DatetimePickerTrigger
+  ...
+  showTimePicker={true}
+  showSecondsPicker={true}
+  ...
+&gt
+&lt;/DatetimePickerTrigger&gt;
+...</code></pre>
+        <div class="example">
+          <div class="popup-picker" id="popup-picker-seconds"></div>
+        </div>
+      </div>
+    </div>
+    
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/components/prism-jsx.min.js"></script>

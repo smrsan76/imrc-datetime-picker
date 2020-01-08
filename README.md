@@ -101,6 +101,13 @@ See the [demo] page.
       <td></td>
     </tr>
     <tr>
+      <td>showSecondsPicker</td>
+      <td>Boolean</td>
+      <td>true</td>
+      <td>Whether to show the seconds range picker.</td>
+      <td></td>
+    </tr>
+    <tr>
       <td>splitPanel</td>
       <td>Boolean</td>
       <td>false</td>
