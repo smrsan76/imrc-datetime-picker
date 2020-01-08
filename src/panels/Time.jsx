@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ReactSlider from "react-slider";
 const moment = require("moment-jalaali");
 
@@ -72,7 +72,7 @@ class Time extends Component {
 
   render() {
     const _moment = this.state.moment;
-    const { style } = this.props;
+    const { style, showSecondsPicker } = this.props;
     const defaultHourValue = _moment.hour();
     const defaultMinuteValue = _moment.minute();
     const defaultSecondValue = _moment.second();
@@ -84,8 +84,17 @@ class Time extends Component {
             <span className={classes["text"]}>{_moment.format("HH")}</span>
             <span className={classes["separater"]}>:</span>
             <span className={classes["text"]}>{_moment.format("mm")}</span>
-            <span className={classes["separater"]}>:</span>
-            <span className={classes["text"]}>{_moment.format("ss")}</span>
+            { showSecondsPicker
+              ? (
+                <Fragment>
+                  <span className={classes["separater"]}>:</span>
+                  <span className={classes["text"]}>{_moment.format("ss")}</span>
+                </Fragment>
+              )
+              : (
+                undefined
+              )
+            }
           </div>
           <div className={classes["sliders"]}>
             <span className={classes["slider-text"]}>Hours:</span>
@@ -112,18 +121,27 @@ class Time extends Component {
             >
               <div className={classes["handle"]} />
             </ReactSlider>
-            <span className={classes["slider-text"]}>Seconds:</span>
-            <ReactSlider
-              min={0}
-              max={59}
-              value={defaultSecondValue}
-              defaultValue={defaultSecondValue}
-              onChange={this.handleChange.bind(this, "seconds")}
-              className={classes["slider"]}
-              withBars
-            >
-              <div className={classes["handle"]} />
-            </ReactSlider>
+            { showSecondsPicker 
+              ? (
+                <Fragment>
+                  <span className={classes["slider-text"]}>Seconds:</span>
+                  <ReactSlider
+                    min={0}
+                    max={59}
+                    value={defaultSecondValue}
+                    defaultValue={defaultSecondValue}
+                    onChange={this.handleChange.bind(this, "seconds")}
+                    className={classes["slider"]}
+                    withBars
+                  >
+                    <div className={classes["handle"]} />
+                  </ReactSlider>
+                </Fragment>
+              )
+              : (
+                undefined
+              )
+            }
           </div>
         </div>
       </div>
