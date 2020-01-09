@@ -1,6 +1,6 @@
 {
   "name": "imrc-datetime-picker",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "(Improved) React component datetime picker by momentjs",
   "main": "dist/imrc-datetime-picker.js",
   "keywords": [
@@ -22,20 +22,13 @@
     "build": "rm -rf ./dist && npm run build-js && npm run build-min-js",
     "release": "bash build/release.sh"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smrsan76/imrc-datetime-picker.git"
-  },
-  "author": "SMRSAN",
+  "author": "alberss",
   "contributors": [{
     "name": "Valudio",
     "email": "development@valudio.com",
     "url": "https://www.valudio.com/en"
   }],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smrsan76/imrc-datetime-picker/issues"
-  },
   "homepage": "https://imrc-datetime-picker.js.org",
   "dependencies": {
     "blacklist": "^1.1.4",
