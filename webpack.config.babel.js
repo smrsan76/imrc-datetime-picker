@@ -39,7 +39,9 @@ export default env => {
               loader: "sass-loader",
               options: {
                 implementation: require("sass"),
-                fiber: require("fibers")
+                sassOptions: {
+                  fiber: false
+                }
               }
             }
           ]
